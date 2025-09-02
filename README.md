@@ -4,3 +4,4 @@ Educational repository
 Collaborators:
 - Газарян
 - Середа
+- Сухота
