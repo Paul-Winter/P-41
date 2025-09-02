@@ -1,2 +1,5 @@
 # P-41
-Educational
+Educational repository
+
+Collaborators:
+- 
