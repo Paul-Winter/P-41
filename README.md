@@ -3,3 +3,4 @@ Educational repository
 
 Collaborators:
 - Газарян
+- Середа
