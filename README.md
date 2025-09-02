@@ -2,4 +2,4 @@
 Educational repository
 
 Collaborators:
-- 
+- Газарян
