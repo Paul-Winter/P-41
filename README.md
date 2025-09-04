@@ -2,7 +2,9 @@
 Educational repository
 
 Collaborators:
-- Газарян
+- Бочаров
 - Середа
 - Сухота
 - Лобозев
+- Газарян
+- Лысенко
