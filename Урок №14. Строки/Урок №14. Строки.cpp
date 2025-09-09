@@ -1,4 +1,7 @@
 ﻿#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <conio.h>
 
 using namespace std;
 
@@ -6,30 +9,26 @@ int main()
 {
     setlocale(LC_ALL, "");
 
-    const int size = 6;
-    
-    // инициализация строкового массива №1
-    char line1[size] = { 'C', 'O', 'D', 'E', '!', '\0' };
+    const char* c1 = "hello, world";
+    const char* scr = "world";
+    char chars[] = "hello";
+    char* dest = &chars[0];
 
-    cout << "Слово: ";
-    for (int i = 0; i < size; i++)
-    {
-        cout << line1[i];
-    }
+    // функции для работы со строками
 
-    cout << "\n";
+    // возвращает значение символа, который пользователь набрал на клавиатуре
+    cout << getchar() << endl;
 
-    // инициализация строкового массива №2
-    char line2[] = "Coder, ";
-    cout << line2;
+    // выводит символ на экран
+    cout << putchar('^') << endl;
 
-    const char* message;
-    message = "мы продолжаем учить С++";
-    int i = 0;
-    while (*(message + i) != '\0')
-    {
-        cout << *(message + i++);
-    }
+    // выводит строку, заданную аргументом
+    cout << puts(c1) << endl;
+
+    // объединяет исходную строку и результирующую строку
+    cout << strcat(dest, scr) << endl;
+
+
 
     return 0;
 }
