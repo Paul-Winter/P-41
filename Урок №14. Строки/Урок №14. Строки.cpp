@@ -20,8 +20,16 @@ int main()
     cout << "\n";
 
     // инициализация строкового массива №2
-    char line2[] = "Coder!";
+    char line2[] = "Coder, ";
     cout << line2;
+
+    const char* message;
+    message = "мы продолжаем учить С++";
+    int i = 0;
+    while (*(message + i) != '\0')
+    {
+        cout << *(message + i++);
+    }
 
     return 0;
 }
