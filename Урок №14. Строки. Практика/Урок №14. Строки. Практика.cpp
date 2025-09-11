@@ -12,7 +12,7 @@ int main()
     int i = 0;
     int j = 0;
     char origin[50];
-    char result[50];
+    char result[100];
     char* pOrigin;
     char* pResult;
 
@@ -21,20 +21,13 @@ int main()
 
     pOrigin = origin;
     pResult = result;
-    size = strlen(origin) + 1;
+    size = 2 * strlen(origin);
+    *(pResult + size) = '\0';
 
-    while (i < size)
+    while ((*pOrigin) != '\0')
     {
-        if (*(pOrigin + i) != 'i')
-        {
-            *(pResult + j) = *(pOrigin + i);
-        }
-        else
-        {
-            *(pResult + j + 1) = 'a';
-        }
-        i++;
-        j++;
+        *pResult++ = *pOrigin;
+        *pResult++ = *pOrigin++;
     }
     puts(result);
 
