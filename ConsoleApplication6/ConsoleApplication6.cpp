@@ -9,6 +9,10 @@ int main()
     srand(time(NULL));
 
     // создаём массивы
+
+    int* D = new int;
+    int count = 0;
+
     int rowsA, colsA;
     cout << "Введите кол-во строк массива А: ";
     cin >> rowsA;
@@ -63,6 +67,30 @@ int main()
             cout << C[i][j] << " ";
         }
         cout << endl;
+    }
+
+    for (int i = 0; i < rowsA; i++)
+    {
+        for (int g = 0; g < colsA; g++)
+        {
+            for (int j = 0; j < rowsB; j++)
+            {
+                for (int h = 0; h < colsB; h++)
+                {
+                    for (int l = 0; l < rowsC; l++)
+                    {
+                        for (int k = 0; k < colsC; k++)
+                        {
+                            if (C[l][k] == B[j][h] && A[i][g]== B[j][h])
+                            {
+                                D[count] = C[l][k];                                
+                                cout << D[count++] << ' ';                                
+                            }                           
+                        }
+                    }
+                }
+            }
+        }
     }
 
     return 0;
