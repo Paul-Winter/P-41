@@ -10,43 +10,34 @@ enum Seasons
     SUMMER,
     AUTUMN
 };
-
 enum Menu { SIGN_IN = 1, REGISTER = 2, QUIT = 3 };
 
-// Бочаров      -   дни недели
-// Газарян      -   месяцы
-// Дымочкина    -   города
-// Лобозев      -   планеты солнечной системы
-// Середа       -   праздники
-// Сухота       -   дни недели
-// Умханов      -   месяцы
+auto someFunc(int num)
+{
+    if (num == 1)
+    {
+        //return 10;
+    }
+    else
+    {
+        return 11.1 // конфликт типов возвращаемого значения;
+    }
+}
 
 int main()
 {
     setlocale(LC_ALL, "");
 
-    int userChoise;
-    do
-    {
-        cout << "Выберите действие:" << endl;
-        cout << "1 - войти" << endl;
-        cout << "2 - зарегистрироваться" << endl;
-        cout << "3 - выход" << endl;
-        cin >> userChoise;
+    auto var = 2.0 + 2.0;
+    auto ptr = &var;
 
-        switch (userChoise)
-        {
-        case SIGN_IN: cout << "Введите логин и пароль!" << endl;
-            break;
-        case REGISTER: cout << "Введите логин, пароль и подтверждение пароля!" << endl;
-            break;
-        case QUIT: cout << "До свидания!" << endl;
-            break;
-        default: cout << "ERROR! Неправильно выбран номер пункта меню!" << endl;
-            break;
-        }
-        cout << endl;
-    } while (userChoise != 3);
+    cout << "var = " << var << endl;
+    cout << "ptr = " << ptr << endl;
+    cout << "*ptr = " << *ptr << endl;
+    cout << "&ptr = " << &ptr << endl;
+
+    auto my_result = someFunc();
+    cout << "result = " << my_result << endl;
 
     return 0;
 }
