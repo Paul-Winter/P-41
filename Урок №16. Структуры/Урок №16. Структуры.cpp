@@ -28,6 +28,11 @@ struct date_
     int number_month;
     string name;
 };
+struct test
+{
+    char c;
+    int i;
+};
 
 void show(grandFather g)
 {
@@ -186,6 +191,25 @@ int main()
     show(stud2);
 
     cout << "=================================================================================" << endl;
+
+    int a;
+    char c;
+    double d;
+    int* p;
+    cout << "sizeof(a) = " << sizeof(a) << endl;
+    cout << "sizeof(c) = " << sizeof(c) << endl;
+    cout << "sizeof(d) = " << sizeof(d) << endl;
+    cout << "sizeof(p) = " << sizeof(p) << endl;
+    cout << "sizeof(int) = " << sizeof(int) << endl;
+    cout << "sizeof(int*) = " << sizeof(int*) << endl;
+    cout << "=================================================================================" << endl;
+
+    test test = { '&', 123456 };
+    cout << "sizeof(test) = " << sizeof(test) << endl;
+    cout << "sizeof(grandFather) = " << sizeof(grandFa) << endl;
+    cout << "sizeof(birthDay) = " << sizeof(BA) << endl;
+    cout << "sizeof(student) = " << sizeof(name_AD) << endl;
+    cout << "sizeof(data_) = " << sizeof(today) << endl;
 
     return 0;
 }
