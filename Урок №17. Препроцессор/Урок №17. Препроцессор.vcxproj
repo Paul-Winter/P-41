@@ -123,6 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bocharov.cpp" />
+    <ClCompile Include="Dymochkina.cpp" />
+    <ClCompile Include="Lobozev.cpp" />
+    <ClCompile Include="Sereda.cpp" />
+    <ClCompile Include="Sukhota.cpp" />
     <ClCompile Include="Урок №17. Препроцессор.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
