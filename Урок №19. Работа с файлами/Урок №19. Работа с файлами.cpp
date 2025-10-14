@@ -4,36 +4,39 @@
 
 using namespace std;
 
+struct Item
+{
+    char title[20];
+    unsigned int qty;
+    float price;
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
 
-    const int n = 5;
-    int arr[n];
+    int i = 0;
     FILE* myFile;
+    Item shop[10];
     const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\myFile.txt";
 
-    for (int i = 0; i < n; i++)
-    {
-        arr[i] = i + 5;
-    }
-
-    if ((fopen_s(&myFile, path, "w")) != NULL)
-        cout << "Указанный файл не может быть создан!";
+    if ((fopen_s(&myFile, path, "r")) != NULL)
+        cout << "Указанный файл не может быть открыт!";
     else
     {
-        cout << "OK!";
-        for (int i = 0; i < n; i++)
+        while (!feof(myFile))
         {
-            fprintf(myFile, "%1d ", arr[i]);
-            fprintf(myFile, "\n");
+            fscanf_s(myFile, "%s", shop[i].title, sizeof(shop[i].title));
+            fscanf_s(myFile, "%u", &shop[i].qty, sizeof(shop[i].qty));
+            fscanf_s(myFile, "%f", &shop[i].price, sizeof(shop[i].price));
+            cout << shop[i].title << " " << shop[i].qty << " " << shop[i].price << endl;
+            i++;
         }
-        cout << endl;
 
-        if (fclose(myFile) == EOF)
-            cout << "Файл не закрыт!";
-        else
-            cout << "Файл закрыт успешно!";
+        //if (fclose(myFile) == EOF)
+        //    cout << "Файл не закрыт!";
+        //else
+        //    cout << "Файл закрыт успешно!";
     }
     cout << endl;
 
