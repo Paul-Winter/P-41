@@ -1,3 +1,5 @@
 milk 10 11,3
 cheese 20 56,5
 ice-cream 4 112
+meat 12 44,8
+bread 122 2,9
