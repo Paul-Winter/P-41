@@ -1,6 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include <io.h>
 
 using namespace std;
 
@@ -93,6 +94,7 @@ int main()
     */
 
     // чтение из бинарного файла
+    /*
     const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\test1.dat";
     const int num = 10;
     int arr[num];
@@ -138,6 +140,14 @@ int main()
         cout << a;
         fclose(myFile);
     }
+    */
+
+    // поиск файла
+    struct _finddata_t myFileInfo;
+
+    long x = _findfirst(".cpp", &myFileInfo);
+
+    cout << myFileInfo.name << " " << myFileInfo.size << " " << myFileInfo.time_create << endl;
 
     return 0;
 }
