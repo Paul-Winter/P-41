@@ -15,6 +15,7 @@ int main()
 {
     setlocale(LC_ALL, "");
 
+    // чтение и запись в текстовый файл
     /*
     int i = 0;
     FILE* myFile;
@@ -42,11 +43,11 @@ int main()
     cout << endl;
     */
 
-    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\testFile.txt";
+    // чтение из текстового файла
+    /*
     int symbol;
     int length = 0;
     int count = 0;
-    FILE* myFile;
     const int size = 128;
     char buffer[size];
 
@@ -65,6 +66,25 @@ int main()
                 buffer[length - 1] = '\0';
             }
             puts(buffer);
+        }
+    }
+    */
+
+    // запись в бинарный файл
+    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\test.dat";
+    const int num = 5;
+    int array[num];
+    FILE* myFile;
+    
+    if (fopen_s(&myFile, path, "wb") != NULL)
+    {
+        cout << "Невозможно открыть файл" << endl;
+    }
+    else
+    {
+        for (int i = 0; i < num; i++)
+        {
+            fwrite(&array[i], sizeof(int), 1, myFile);
         }
     }
 
