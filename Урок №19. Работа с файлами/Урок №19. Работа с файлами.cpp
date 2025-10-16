@@ -42,11 +42,13 @@ int main()
     cout << endl;
     */
 
-    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\myFile.txt";
+    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\testFile.txt";
     int symbol;
     int length = 0;
     int count = 0;
     FILE* myFile;
+    const int size = 128;
+    char buffer[size];
 
     if (fopen_s(&myFile, path, "r") != NULL)
     {
@@ -56,27 +58,14 @@ int main()
     {
         while (!feof(myFile))
         {
-            symbol = fgetc(myFile);
-            if (symbol == '\n')
+            fgets(buffer, (size - 1), myFile);
+            length = strlen(buffer);
+            if (buffer[length - 1] == '\n')
             {
-                //count++;
-                //cout << "Строка №" << count << " длиной " << length << " символов" << endl;
-                //length = 0;
-
-                cout << endl;
+                buffer[length - 1] = '\0';
             }
-            else
-            {
-                //length++;
-
-                cout << (char)symbol;
-            }
+            puts(buffer);
         }
-        //if (length)
-        //{
-        //    count++;
-        //    cout << "Строка №" << count << " длиной " << length << " символов" << endl;
-        //}
     }
 
     return 0;
