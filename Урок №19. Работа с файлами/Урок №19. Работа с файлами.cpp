@@ -144,10 +144,25 @@ int main()
 
     // поиск файла
     struct _finddata_t myFileInfo;
+    char path[128];
+    char mask[20];
 
-    long x = _findfirst(".cpp", &myFileInfo);
+    // запрос пути
+    cout << "Введите полный путь к файлу (например: C:\\Users\\имяФайла)" << endl;
+    cin >> path;
+    // запрос маски файла
+    cout << "Введите маску файла (например: '.dat' или '.txt')" << endl;
+    cin >> mask;
+    // соединяем строки пути и маски
+    strcat_s(path, mask);
 
-    cout << myFileInfo.name << " " << myFileInfo.size << " " << myFileInfo.time_create << endl;
+    long x = _findfirst(path, &myFileInfo);
+
+    while (x != -1)
+    {
+        cout << myFileInfo.name << " " << myFileInfo.size << " " << myFileInfo.attrib << endl;
+        x = _findnext(x, &myFileInfo);
+    }
 
     return 0;
 }
