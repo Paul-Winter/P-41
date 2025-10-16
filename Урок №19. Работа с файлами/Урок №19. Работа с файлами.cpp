@@ -71,6 +71,7 @@ int main()
     */
 
     // запись в бинарный файл
+    /*
     const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\test1.dat";
     const int num = 5;
     int array[num];
@@ -88,6 +89,54 @@ int main()
         //{
         //    fwrite(&array[i], sizeof(int), 1, myFile);
         //}
+    }
+    */
+
+    // чтение из бинарного файла
+    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\test1.dat";
+    const int num = 10;
+    int arr[num];
+    int a;
+    FILE* myFile;
+
+    if (fopen_s(&myFile, path, "wb") != NULL)
+    {
+        cout << "Невозможно открыть файл" << endl;
+    }
+    else
+    {
+        for (int i = 0; i < num; i++)
+        {
+            arr[i] = i + 1;
+            fwrite(&arr[i], sizeof(int), 1, myFile);
+        }
+        fclose(myFile);
+    }
+
+    if (fopen_s(&myFile, path, "rb") != NULL)
+    {
+        cout << "Невозможно открыть файл" << endl;
+    }
+    else
+    {
+        for (int i = 0; i < num; i++)
+        {
+            arr[i] = i + 1;
+            fread(&a, sizeof(int), 1, myFile);
+        }
+        cout << a << "\n";
+        fclose(myFile);
+    }
+
+    if (fopen_s(&myFile, path, "rb") != NULL)
+    {
+        cout << "Невозможно открыть файл" << endl;
+    }
+    else
+    {
+        fread(&a, sizeof(int), 1, myFile);
+        cout << a;
+        fclose(myFile);
     }
 
     return 0;
