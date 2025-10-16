@@ -71,7 +71,7 @@ int main()
     */
 
     // запись в бинарный файл
-    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\test.dat";
+    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\test1.dat";
     const int num = 5;
     int array[num];
     FILE* myFile;
@@ -82,10 +82,12 @@ int main()
     }
     else
     {
-        for (int i = 0; i < num; i++)
-        {
-            fwrite(&array[i], sizeof(int), 1, myFile);
-        }
+        fwrite(&array[0], sizeof(int), num, myFile);
+
+        //for (int i = 0; i < num; i++)
+        //{
+        //    fwrite(&array[i], sizeof(int), 1, myFile);
+        //}
     }
 
     return 0;
