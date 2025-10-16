@@ -15,6 +15,7 @@ int main()
 {
     setlocale(LC_ALL, "");
 
+    /*
     int i = 0;
     FILE* myFile;
     Item shop[10];
@@ -39,6 +40,44 @@ int main()
         //    cout << "Файл закрыт успешно!";
     }
     cout << endl;
+    */
+
+    const char* path = "C:\\Users\\Student\\P-41\\Урок №19. Работа с файлами\\myFile.txt";
+    int symbol;
+    int length = 0;
+    int count = 0;
+    FILE* myFile;
+
+    if (fopen_s(&myFile, path, "r") != NULL)
+    {
+        cout << "Невозможно открыть файл!" << endl;
+    }
+    else
+    {
+        while (!feof(myFile))
+        {
+            symbol = fgetc(myFile);
+            if (symbol == '\n')
+            {
+                //count++;
+                //cout << "Строка №" << count << " длиной " << length << " символов" << endl;
+                //length = 0;
+
+                cout << endl;
+            }
+            else
+            {
+                //length++;
+
+                cout << (char)symbol;
+            }
+        }
+        //if (length)
+        //{
+        //    count++;
+        //    cout << "Строка №" << count << " длиной " << length << " символов" << endl;
+        //}
+    }
 
     return 0;
 }
