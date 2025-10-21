@@ -38,8 +38,25 @@
 //   вывод статистики и сохранение результатов пользователя
 
 #include <iostream>
+#include <string>
+#include <array>
 
 using namespace std;
+
+// Структура "User" (Пользователь)
+struct User
+{
+    string name;
+    string password;
+    array<string, 5> quizStats;
+    User()
+    {
+        for (auto& topic : quizStats)
+        {
+            topic = "0/0";
+        }
+    }
+};
 
 int main()
 {
@@ -74,7 +91,29 @@ int main()
             cin >> pass;
             // Дописать проверку пароля заполнение структуры
         }
+        
+        User user;
 
+        // Ввод имени пользователя
+        cout << "Введите имя пользователя (На английском): " << endl;
+        getline(cin, user.name);
+
+        // Ввод пароля
+        cout << "Введите пароль: " << endl;
+        getline(cin, user.password);
+
+        // Подтверждение сохранения данных
+        cout << "Данные успешно сохранены" << endl;
+        cout << "Имя пользователя: " << user.name << endl;
+        cout << "Пароль: " << user.password << endl;
+
+        // Вывод статистики по темам
+        cout << "статистика по темам (я не знаю как это заполнить):" << endl;
+        for (size_t i = 0; i < user.quizStats.size(); ++i)
+        {
+            cout << "Тема" << i + 1 << " : " << user.quizStats[i] << endl;
+        }
+            
         // Регистрация пользователя (Логин, пароль, имя, фамилия, возраст, пол, класс/курс)
         else
         {
