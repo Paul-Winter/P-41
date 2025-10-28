@@ -53,10 +53,14 @@ struct User
     string password;
     vector<int> quizStats;
 
-    //Функция для записи данных пользователя в файл
-    void writeToFile(ofstream& file, User user) const
+    // Функция для записи данных пользователя в файл
+    void writeToFile(ofstream& file) const
     {
-        file << name << " " << password << " " << quizStats[0] << " " << quizStats[1] << " " << quizStats[2] << " " << quizStats[3] << " " << quizStats[4] << endl;
+        file << name << " " << password << " ";
+        for (int stat : quizStats) {
+            file << stat << " ";
+        }
+        file << endl;
     }
 
     //Функция для считывания данных пользователя из файла
@@ -77,7 +81,7 @@ struct User
         }
         for (const auto& user : users)
         {
-            user.writeToFile(file, user);
+            user.writeToFile(file);
         }
         cout << "Данные успешно сохранены в файл! " << endl;
         file.close();
@@ -187,28 +191,33 @@ int main()
         }
         else
         {
-            // Ввод имени пользователя
             cout << "Введите имя пользователя (На английском): " << endl;
             cin >> user.name;
 
-            // Ввод пароля
             cout << "Введите пароль: " << endl;
             cin >> user.password;
 
-            // Подтверждение сохранения данных
             cout << "Данные успешно сохранены" << endl;
             cout << "Имя пользователя: " << user.name << endl;
             cout << "Пароль: " << user.password << endl;
             user.quizStats = { 0,0,0,0,0 };
         }
-        user.writeToFile(file, user);
+        user.writeToFile(file);
         table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
 
         cout << "\nВведите номер темы:\n1. Игры \n2. Кино \n3. Музыка \n4. Путешествия \n5. Литература\nВаш выбор: ";
         int ans = 0;
-        int atq; //ответ на вопрос 
-        int ca = 0; //правильные ответы
+        int atq;
+        int ca = 0;
         cin >> ans;
+
+        ofstream userFile(filename, ios::app);
+        if (!userFile.is_open()) {
+            cout << "Ошибка при открытии файла!" << endl;
+            return 1;
+        }
+        user.writeToFile(userFile);
+
 
         //ВИКТОРИНА
         switch (ans)
@@ -793,8 +802,7 @@ int main()
             }
             cout << "\n\nЖдем тебя еще раз!";
 
-            user.writeToFile(file, user);
-            //user.writeToFile(filefolder, user);
+            user.writeToFile(file);
 
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             return 0;
@@ -805,7 +813,7 @@ int main()
                 user.quizStats[1] = ca;
             }
             cout << "\n\nЖдем тебя еще раз!";
-            user.writeToFile(file, user);
+            user.writeToFile(file);
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             return 0;
         case 3: cout << "Музыка";
@@ -815,7 +823,7 @@ int main()
                 user.quizStats[2] = ca;
             }
             cout << "\n\nЖдем тебя еще раз!";
-            user.writeToFile(file, user);
+            user.writeToFile(file);
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             return 0;
         case 4: cout << "Путешествие";
@@ -825,7 +833,7 @@ int main()
                 user.quizStats[3] = ca;
             }
             cout << "\n\nЖдем тебя еще раз!";
-            user.writeToFile(file, user);
+            user.writeToFile(file);
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             return 0;
         case 5: cout << "Литература";
@@ -835,17 +843,17 @@ int main()
                 user.quizStats[4] = ca;
             }
             cout << "\n\nЖдем тебя еще раз!";
-            user.writeToFile(file, user);
+            user.writeToFile(file);
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
 
             return 0;
         }
-    }
-    else
-    {
-        cout << " XXXXXX не робит " << endl << endl;
-    }
+        user.writeToFile(userFile);
+        userFile.close();
+        table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]); //Выводим таблицу.
 
+        return 0;
+    }
     return 0;
 }
 /* Если что по пробелам в заметках можно понять что вы через нейронку делали!:)
