@@ -56,7 +56,7 @@ struct User
     //Функция для записи данных пользователя в файл
     void writeToFile(ofstream& file, User user) const
     {
-        file << user.name << " " << user.password << " " << user.quizStats[0] << " " << user.quizStats[1] << " " << user.quizStats[2] << " " << user.quizStats[3] << " " user.quizStats[4] <<<< endl;
+        file << user.name << " " << user.password << " " << user.quizStats[0] << " " << user.quizStats[1] << " " << user.quizStats[2] << " " << user.quizStats[3] << " " << user.quizStats[4] << endl;
     }
 
     //Функция для считывания данных пользователя из файла
