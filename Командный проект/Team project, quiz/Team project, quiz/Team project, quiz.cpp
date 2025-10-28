@@ -801,7 +801,11 @@ int main()
                 user.quizStats[0] = ca;
             }
             cout<<"\n\nЖдем тебя еще раз!";
+<<<<<<< HEAD
             user.writeToFile(file, user);
+=======
+            user.writeToFile(filefolder, user);
+>>>>>>> d51963dfdeed6d6f7115f9b2d1ed5cae963a424f
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             return 0;
         case 2: cout << "Кино";
