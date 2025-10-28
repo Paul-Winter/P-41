@@ -56,7 +56,7 @@ struct User
     //Функция для записи данных пользователя в файл
     void writeToFile(ofstream& file, User user) const
     {
-        file << user.name << " " << user.password << " " << user.quizStats[0] << " " << user.quizStats[1] << " " << user.quizStats[2] << " " << user.quizStats[3] << " " << user.quizStats[4] << endl;
+        file << name << " " << password << " " << quizStats[0] << " " << quizStats[1] << " " << quizStats[2] << " " << quizStats[3] << " " << quizStats[4] << endl;
     }
 
     //Функция для считывания данных пользователя из файла
@@ -159,19 +159,10 @@ int main()
     //      Ядро
     string zxc = "да";
     FILE* users;
-    const char* filefolder = "C:\\Users\\Student\\P-41\\Командный проект\\Team project, quiz\\Team project, quiz\\users.txt";
+    const char* filefolder = "C:\\Users\\Student\\P-41\\Командный проект\\Team project, quiz\\Team project, quiz\\asdsad.txt";
     const string filename = "users.txt";
-    //Ошибка//
 
-    //cout << "\nХотите сыграть в игру(да/нет): " << endl;
-    //cin >> zxc;
-
-    if (zxc == "нет")
-    {
-        cout << "Увидимся в следующий раз!";
-        return 0;
-    }
-    else if(zxc == "да")
+    if(zxc == "да")
     {
         cout << "\nВы зарегистрированы?(+/-)\nОтвет:";
         cin >> zxc;
@@ -734,13 +725,13 @@ int main()
 
             cout << "6. Кто автор «Гарри Поттера»?\n1) Джон Р. Р. Толкин\n2) Клайв С. Льюис\n3) Джоан Роулинг\n4) Джордж Р. Р. Мартин\nВаш ответ: ";
             cin >> atq;
-            if (atq == 2)
+            if (atq == 3)
             {
                 cout << "Правильно +1 балл"; ca++;
             }
             else
             {
-                cout << "Непрвильно! ты не получаешь балл (Правильный ответ был: 2)" << endl;
+                cout << "Непрвильно! ты не получаешь балл (Правильный ответ был: 3)" << endl;
             }
 
             cout << "7. В какой стране происходит действие «Страданий молодого Вертера» Иоганна Вольфганга Гёте?\n1) Франция\n2) Англия\n3) Италия\n4) Германия\nВаш ответ: ";
@@ -801,11 +792,11 @@ int main()
                 user.quizStats[0] = ca;
             }
             cout<<"\n\nЖдем тебя еще раз!";
-<<<<<<< HEAD
+
             user.writeToFile(file, user);
-=======
-            user.writeToFile(filefolder, user);
->>>>>>> d51963dfdeed6d6f7115f9b2d1ed5cae963a424f
+
+            //user.writeToFile(filefolder, user);
+
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             return 0;
         case 2: cout << "Кино";
