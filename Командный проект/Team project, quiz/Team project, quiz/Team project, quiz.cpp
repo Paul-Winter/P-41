@@ -746,8 +746,8 @@ int regame(User user)
             cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[0];
             user.quizStats[0] = ca;
         }
-        user.writeToFile(file, user);
-        user.writeToFile(file, user);
+        user.writeToFile(file);
+        user.writeToFile(file);
         table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
         break;
     case 2: cout << "Кино";
@@ -756,7 +756,7 @@ int regame(User user)
             cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[1];
             user.quizStats[1] = ca;
         }
-        user.writeToFile(file, user);
+        user.writeToFile(file);
         table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
         break;
     case 3: cout << "Музыка";
@@ -765,7 +765,7 @@ int regame(User user)
             cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[2];
             user.quizStats[2] = ca;
         }
-        user.writeToFile(file, user);
+        user.writeToFile(file);
         table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
         break;
     case 4: cout << "Путешествие";
@@ -774,7 +774,7 @@ int regame(User user)
             cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[3];
             user.quizStats[3] = ca;
         }
-        user.writeToFile(file, user);
+        user.writeToFile(file);
         table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
         break;
     case 5: cout << "Литература";
@@ -783,7 +783,7 @@ int regame(User user)
             cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[4];
             user.quizStats[4] = ca;
         }
-        user.writeToFile(file, user);
+        user.writeToFile(file);
         table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
         break;
     }
@@ -1448,17 +1448,16 @@ case 1: cout << "Игры";
         cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[1];
         user.quizStats[1] = ca;
     }
-    user.writeToFile(file, user);
+    user.writeToFile(file);
     table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
     break;
-}
 case 2: cout << "Кино";
     if (ca > user.quizStats[1])
     {
         cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[1];
         user.quizStats[1] = ca;
     }
-    user.writeToFile(file, user);
+    user.writeToFile(file);
     table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
     break;
 case 3: cout << "Музыка";
@@ -1467,7 +1466,7 @@ case 3: cout << "Музыка";
         cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[2];
         user.quizStats[2] = ca;
     }
-    user.writeToFile(file, user);
+    user.writeToFile(file);
     table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
     break;
 case 4: cout << "Путешествие";
@@ -1476,7 +1475,7 @@ case 4: cout << "Путешествие";
         cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[3];
         user.quizStats[3] = ca;
     }
-    user.writeToFile(file, user);
+    user.writeToFile(file);
     table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
     break;
 case 5: cout << "Литература";
@@ -1485,7 +1484,7 @@ case 5: cout << "Литература";
         cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[4];
         user.quizStats[4] = ca;
     }
-    user.writeToFile(file, user);
+    user.writeToFile(file);
     table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
     break;
 }
