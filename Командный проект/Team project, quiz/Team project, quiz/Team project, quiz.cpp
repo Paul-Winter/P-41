@@ -104,7 +104,7 @@ struct User
         cout << "Данные успешно считаны из файла! " << endl;
         return users;
     }
-}
+};
 //Принцип формирования таблицы статистики пользователя
 void table(string names, int game, int cinema, int music, int travel, int literature, int point, int count)
 {
@@ -799,7 +799,7 @@ int main()
                 user.quizStats[0] = ca;
             }
             cout<<"\n\nЖдем тебя еще раз!";
-            writeToFile(filefolder, user);
+            user.writeToFile(filefolder, user);
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             return 0;
         case 2: cout << "Кино";
