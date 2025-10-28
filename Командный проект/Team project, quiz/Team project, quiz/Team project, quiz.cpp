@@ -218,7 +218,7 @@ int main()
             cin >> atq;
             if (atq == 3)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -229,7 +229,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else 
             {
@@ -240,7 +240,7 @@ int main()
             cin >> atq;
             if (atq == 2) 
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else 
             {
@@ -251,7 +251,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             } 
             else 
             {
@@ -262,7 +262,7 @@ int main()
             cin >> atq;
             if (atq == 2) 
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else 
             {
@@ -273,7 +273,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++; 
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else 
             {
@@ -284,7 +284,7 @@ int main()
             cin >> atq;
             if (atq == 2) 
             {
-                cout << "Правильно +1 балл"; ca++; 
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else 
             {
@@ -295,7 +295,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++; 
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else 
             {
@@ -306,7 +306,7 @@ int main()
             cin >> atq;
             if (atq == 4)
             {
-                cout << "Правильно +1 балл"; ca++; 
+                cout << "Правильно +1 балл" << endl; ca++;
             } 
             else 
             {
@@ -317,7 +317,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++; 
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else 
             { 
@@ -332,7 +332,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -343,7 +343,7 @@ int main()
             cin >> atq;
             if (atq == 3)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -354,7 +354,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -365,7 +365,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -376,7 +376,7 @@ int main()
             cin >> atq;
             if (atq == 4)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -387,7 +387,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -398,7 +398,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -409,7 +409,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -421,7 +421,7 @@ int main()
             cin >> atq;
             if (atq == 3)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -432,7 +432,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -446,7 +446,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -457,7 +457,7 @@ int main()
             cin >> atq;
             if (atq == 4)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -468,7 +468,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -479,7 +479,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -490,7 +490,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -501,7 +501,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -512,7 +512,7 @@ int main()
             cin >> atq;
             if (atq == 3)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -523,7 +523,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -534,7 +534,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -545,7 +545,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -559,7 +559,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -570,7 +570,7 @@ int main()
             cin >> atq;
             if (atq == 3)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -581,7 +581,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -592,7 +592,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -603,7 +603,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -614,7 +614,7 @@ int main()
             cin >> atq;
             if (atq == 3)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -625,7 +625,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -636,7 +636,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -647,7 +647,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -658,7 +658,7 @@ int main()
             cin >> atq;
             if (atq == 4)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -672,7 +672,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -683,7 +683,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -694,7 +694,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -705,7 +705,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -716,7 +716,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -727,7 +727,7 @@ int main()
             cin >> atq;
             if (atq == 3)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -738,7 +738,7 @@ int main()
             cin >> atq;
             if (atq == 4)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -749,7 +749,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -760,7 +760,7 @@ int main()
             cin >> atq;
             if (atq == 1)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -771,7 +771,7 @@ int main()
             cin >> atq;
             if (atq == 2)
             {
-                cout << "Правильно +1 балл"; ca++;
+                cout << "Правильно +1 балл" << endl; ca++;
             }
             else
             {
@@ -794,7 +794,6 @@ int main()
             cout<<"\n\nЖдем тебя еще раз!";
 
             user.writeToFile(file, user);
-
             //user.writeToFile(filefolder, user);
 
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
