@@ -1,43 +1,4 @@
-﻿﻿// __________ВИКТОРИНА__________
-// Реализовать игру "Викторина".
-// Пользователь выбирает раздел знаний(например: игры, кино, музыка, путешествия и т.д.),
-// и получает набор вопросов по выбранной тематике.
-// У каждого вопроса должно быть четыре варианта ответа.
-// У каждого вопроса есть свой коэффициент сложности.
-// За каждый правильный ответ пользователь получает один балл,
-// умноженный на коэффициент сложности.
-// Когда пользователь ответит на все вопросы, на экране отображается набранная сумма баллов.
-// Для повышения уровня сложности приложения информацию можно читать и записывать в файл.
-// Также для повышения уровня сложности можно реализовать
-// механизм турнирной таблицы (отображает позицию пользователя по конкретному разделу знаний).
-//
-// задача Дымочкиной:
-//   подготовить для 5 тем (игры, кино, музыка, путешествия, литература)
-//   по 10 вопросов + коэффициент сложности на каждую по 4 варианта ответа
-//   (только один вариант правильный) результат оформить в текстовый файл
-//
-// задача Сухоты:
-//   создать структуру "вопрос-ответы" с одним правильным вариантом
-//
-// задача Середа: 
-//   создать структуру "пользователь" в которой будет собираться его статистика:
-//   имя_пользователя, его пароль, статистика по темам пройденных викторин
-//   (сколько набрал баллов / сколько всего можно набрать баллов)
-//
-// задача Бочарова: 
-//   реализовать механизм сохранения в файл данных структуры "пользователь" и
-//   механизм считывания из файла данных "пользователей" для оформления статистики
-//
-// задача Лобозева:
-//   определить принцип формирования таблицы статистики и вывода её в консоль
-//
-// задача Газаряна:
-//   создать "ядро" программы "викторина":
-//   меню пользователя: запрос темы, регистрация пользователя,
-//   авторизация пользователя, запуск "викторины" согласно выбранной темы,
-//   вывод статистики и сохранение результатов пользователя
-
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -45,15 +6,132 @@
 #include <array>
 
 using namespace std;
+//система входа и регистрации аккаунта
+class Password
+{
+public:
+    int Entrance()
+    {
+        string login = "login.txt";
+        string password = "password.txt";
+
+        fstream log;
+        fstream pass;
+
+        log.open(login, fstream::in | fstream::out | fstream::app);
+        pass.open(password, fstream::in | fstream::out | fstream::app);
+
+        if (!log.is_open() && !pass.is_open())
+        {
+            cout << "Ошибка йоу!" << endl;
+        }
+        else
+        {
+            string log_cheker;
+            string pass_cheker;
+
+            while (!log.eof())
+            {
+                log_cheker = "";
+                log >> log_cheker;
+            }
+            while (!pass.eof())
+            {
+                pass_cheker = "";
+                pass >> pass_cheker;
+            }
+            string login_correct;
+            string pass_correct;
+
+            cout << "Введите свой логин: " << endl;
+            cin >> login_correct;
+            cout << "Введите свой пароль: " << endl;
+            cin >> pass_correct;
+
+            if (login_correct != log_cheker && pass_correct != pass_cheker)
+            {
+                cout << "Пароль или логин введен не правильно!" << endl;
+            }
+            else
+            {
+                cout << "Данные введены верно йоу!" << endl;
+            }
+        }
+        return 0;
+    }
+    int Sign_up()
+    {
+        string login = "login.txt";
+        string password = "password.txt";
+
+        fstream log;
+        fstream pass;
+
+        log.open(login, fstream::in | fstream::out | fstream::app);
+        pass.open(password, fstream::in | fstream::out | fstream::app);
+
+        if (!log.is_open() && !pass.is_open())
+        {
+            cout << "Ошибка йоу!" << endl;
+        }
+        else
+        {
+            string log_cheker;
+            string pass_cheker;
+
+            cout << "Введите логин: " << endl;
+            cin >> log_cheker;
+            cout << "Введите пароль: " << endl;
+            cin >> pass_cheker;
+
+            log << log_cheker;
+            pass << pass_cheker;
+            cout << "Регистрация прошла полностью успешно!" << endl;
+        }
+        return 0;
+    }
+};
+
+class menu
+{
+public:
+
+    int RunMenu()
+    {
+        int punkt;
+        cout << "1.Вход" << endl;
+        cout << "2.Регистрация" << endl;
+        cin >> punkt;
+
+        if (punkt != 1 && punkt != 2)
+        {
+            cout << "Выбран неверный пункт меню!" << endl;
+        }
+        if (punkt == 1)
+        {
+            system("cls");
+            Password pass;
+            pass.Entrance();
+        }
+        if (punkt == 2)
+        {
+            system("cls");
+            Password pass;
+            pass.Sign_up();
+        }
+        return 0;
+    }
+};
 
 // Структура "User" (Пользователь)
 struct User
 {
     string name;
     string password;
+    string quizstats;
     vector<int> quizStats;
 
-    // Функция для записи данных пользователя в файл
+     //Функция для записи данных пользователя в файл
     void writeToFile(ofstream& file) const
     {
         file << name << " " << password << " ";
@@ -71,19 +149,16 @@ struct User
         return user;
     }
     //Функция для записи всех пользователей в файл
-    void saveUsersToFile(const vector<User>& users, const string& filename)
-    {
-        ofstream file(filename);
-        if (!file.is_open())
-        {
+    void saveUsersToFile(const vector<User>& userList) {
+        ofstream file("users_list.dat", ios::out | ios::trunc);
+        if (!file.is_open()) {
             cout << "Ошибка при открытии файла! " << endl;
             return;
         }
-        for (const auto& user : users)
-        {
-            user.writeToFile(file);
+        file << userList.size() << endl;
+        for (int i = 0; i < userList.size(); i++) {
+            file << userList[i].quizstats << " " << userList[i].name << endl;
         }
-        cout << "Данные успешно сохранены в файл! " << endl;
         file.close();
     }
 
@@ -115,9 +190,9 @@ void table(string names, int game, int cinema, int music, int travel, int litera
     cout << " -------------------------------------------------------------------------------------------------- " << endl;
     cout << "|                                 Статистика пользователя                                          |" << endl;
     cout << " -------------------------------------------------------------------------------------------------- " << endl;
-    cout << "|\t\t\tИмя\t\t\t|\t\tИгры\t\t|\t\tКино\t\t|\t\tМузыка\t\t|\tПутешествие\t|\tЛитература\t|\t\tБаллы\t\t|" << endl;
+    cout << "|      Имя      |   Игры    |   Кино   |    Музыка    |  Путешествие  |  Литература  |    Баллы    |" << endl;
     cout << " -------------------------------------------------------------------------------------------------- " << endl;
-    cout << "|\t" << names << "\t" << "|\t\t" << game << "\t\t|\t\t" << cinema << "\t\t|\t\t\t" << music << "\t\t\t|\t\t\t" << travel << "\t\t\t|\t\t\t" << literature << "\t\t\t|   " << game + cinema + music + travel + literature << "  |" << endl;
+    cout << "|      " << names << "    " << "  |        " << game << "        |        " << cinema << "        |    " << music << "     |" << travel << "\t\t\t|\t\t\t" << literature << "\t\t\t|   " << game + cinema + music + travel + literature << "  |" << endl;
     cout << " -------------------------------------------------------------------------------------------------- " << endl;
 }
 
@@ -155,7 +230,7 @@ User findUserByLogin(const string& filename, const string& login)
 int regame(User user)
 {
     FILE* users;
-    const char* filefolder = "C:\\Users\\Student\\P-41\\Командный проект\\Team project, quiz\\Team project, quiz\\users.txt";
+    const char* filefolder = "C:\\Users\\чупеп\\P-41\\Командный проект\\Team project, quiz\\users.txt"; /*\\Student\\P-41\\Командный проект\\Team project, quiz\\Team project, quiz\\users.txt"*/
     const string filename = "users.txt";
     ofstream file("users.txt");
     cout << "\nВы попали вначало игры!\nВведите номер темы:\n1. Игры \n2. Кино \n3. Музыка \n4. Путешествия \n5. Литература\nВаш выбор: ";
@@ -384,6 +459,7 @@ int regame(User user)
             user.quizStats[4] = ca;
         }
         user.writeToFile(file);
+
         table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
         break;
     }
@@ -405,11 +481,12 @@ int main()
     setlocale(LC_ALL, "");
 
     cout << "Добро пожаловать!";
-    cout << "Это викторина, Созданная студентами группы P-41! \nДымочкиной, Сухотой, Бочаровым, Лобозевым, Газаряном.\nбыло тяжко, посторайтесь подумать над ответами!)" << endl << endl << endl;
+    cout << "Это викторина, Созданная студентами группы P-41! \nДымочкиной, Середа, Бочаровым, Лобозевым, Газаряном.\nбыло тяжко, посторайтесь подумать над ответами!)" << endl << endl << endl;
     ofstream file("users.txt");
     //      Ядро
     string zxc;
     FILE* users;
+    menu Menu;
     const char* filefolder = "C:\\Users\\Student\\P-41\\Командный проект\\Team project, quiz\\Team project, quiz\\users.txt";
     const string filename = "users.txt";
     while (zxc != "+" || zxc != "-")
@@ -428,28 +505,30 @@ int main()
             User user;
             if (zxc == "+")
             {
-                string log, pass;
-                cout << "\nАВТОРИЗАЦИЯ:\nВведите логин: ";
-                cin >> log;
-                cout << "\nВведите пароль: ";
-                cin >> pass;
-                User user = findUserByLogin(filename, log);
-                if (user.name == "")
-                {
-                    cout << "Пользователь не найден";
-                }
-                else if (pass != user.password)
-                {
-                    cout << "Неверный пароль!";
-                    return 0;
-                }
+                //string log, pass;
+                //cout << "\nАВТОРИЗАЦИЯ:\nВведите логин: ";
+                //cin >> log;
+                //cout << "\nВведите пароль: ";
+                //cin >> pass;
+                //User user = findUserByLogin(filename, log);
+                //if (user.name == "")
+                //{
+                //    cout << "Пользователь не найден";
+                //}
+                //else if (pass != user.password)
+                //{
+                //    cout << "Неверный пароль!";
+                //    return 0;
+                //}
+                system("cls");
+                Password pass;
+                pass.Entrance();
             }
             else
             {
-                cout << "Введите имя пользователя (На английском): " << endl;
-                cin >> user.name;
-                cout << "Введите пароль: " << endl;
-                cin >> user.password;
+                system("cls");
+                Password pass;
+                pass.Sign_up();
                 user.quizStats = { 0,0,0,0,0 };
             }
             user.writeToFile(file);
