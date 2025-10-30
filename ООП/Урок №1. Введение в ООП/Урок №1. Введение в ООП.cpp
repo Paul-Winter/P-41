@@ -21,7 +21,14 @@ public:
         return sum / 5;
     }
     // показать все оценки
-
+    void allMarks()
+    {
+        cout << "Оценки:" << endl;
+        for (int j = 0; j < 5; j++)
+        {
+            cout << marks[j] << endl;
+        }
+    }
 };
 struct Stud
 {
@@ -77,6 +84,7 @@ int main()
     //al.Print();
 
     cout << "Студент: " << studClass.name << endl;
+    studClass.allMarks();
     cout << "Средний балл: " << studClass.getAver() << endl;
 
     return 0;
