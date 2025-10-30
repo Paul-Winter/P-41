@@ -10,6 +10,7 @@ using namespace std;
 class Password
 {
 public:
+
     int Entrance()
     {
         string login = "login.txt";
@@ -23,7 +24,7 @@ public:
 
         if (!log.is_open() && !pass.is_open())
         {
-            cout << "Ошибка йоу!" << endl;
+            cout << "Ошибка!" << endl;
         }
         else
         {
@@ -40,6 +41,7 @@ public:
                 pass_cheker = "";
                 pass >> pass_cheker;
             }
+
             string login_correct;
             string pass_correct;
 
@@ -54,10 +56,10 @@ public:
             }
             else
             {
-                cout << "Данные введены верно йоу!" << endl;
+                cout << "Данные введены верно!" << endl;
             }
+            return 0;
         }
-        return 0;
     }
     int Sign_up()
     {
@@ -72,56 +74,25 @@ public:
 
         if (!log.is_open() && !pass.is_open())
         {
-            cout << "Ошибка йоу!" << endl;
+            cout << "Ошибка!" << endl;
         }
         else
         {
             string log_cheker;
             string pass_cheker;
-
-            cout << "Введите логин: " << endl;
+            cout << "Введите свой логин: " << endl;
             cin >> log_cheker;
-            cout << "Введите пароль: " << endl;
+            cout << "Введите свой пароль: " << endl;
             cin >> pass_cheker;
 
-            log << log_cheker;
-            pass << pass_cheker;
-            cout << "Регистрация прошла полностью успешно!" << endl;
+            log << log_cheker << endl;
+            pass << pass_cheker << endl;
+
+            return 0;
         }
-        return 0;
     }
 };
 
-class menu
-{
-public:
-
-    int RunMenu()
-    {
-        int punkt;
-        cout << "1.Вход" << endl;
-        cout << "2.Регистрация" << endl;
-        cin >> punkt;
-
-        if (punkt != 1 && punkt != 2)
-        {
-            cout << "Выбран неверный пункт меню!" << endl;
-        }
-        if (punkt == 1)
-        {
-            system("cls");
-            Password pass;
-            pass.Entrance();
-        }
-        if (punkt == 2)
-        {
-            system("cls");
-            Password pass;
-            pass.Sign_up();
-        }
-        return 0;
-    }
-};
 
 // Структура "User" (Пользователь)
 struct User
@@ -484,9 +455,12 @@ int main()
     cout << "Это викторина, Созданная студентами группы P-41! \nДымочкиной, Середа, Бочаровым, Лобозевым, Газаряном.\nбыло тяжко, посторайтесь подумать над ответами!)" << endl << endl << endl;
     ofstream file("users.txt");
     //      Ядро
+    User user;
     string zxc;
     FILE* users;
-    menu Menu;
+    int ans = 0;
+    string atq[10];
+    int ca = 0;
     const char* filefolder = "C:\\Users\\Student\\P-41\\Командный проект\\Team project, quiz\\Team project, quiz\\users.txt";
     const string filename = "users.txt";
     while (zxc != "+" || zxc != "-")
@@ -505,21 +479,6 @@ int main()
             User user;
             if (zxc == "+")
             {
-                //string log, pass;
-                //cout << "\nАВТОРИЗАЦИЯ:\nВведите логин: ";
-                //cin >> log;
-                //cout << "\nВведите пароль: ";
-                //cin >> pass;
-                //User user = findUserByLogin(filename, log);
-                //if (user.name == "")
-                //{
-                //    cout << "Пользователь не найден";
-                //}
-                //else if (pass != user.password)
-                //{
-                //    cout << "Неверный пароль!";
-                //    return 0;
-                //}
                 system("cls");
                 Password pass;
                 pass.Entrance();
@@ -529,14 +488,10 @@ int main()
                 system("cls");
                 Password pass;
                 pass.Sign_up();
-                user.quizStats = { 0,0,0,0,0 };
             }
-            user.writeToFile(file);
+
             table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
             cout << "\n\nВведите номер темы:\n1. Игры \n2. Кино \n3. Музыка \n4. Путешествия \n5. Литература\nВаш выбор: ";
-            int ans = 0;
-            string atq[10];
-            int ca = 0;
             cin >> ans;
             ofstream userFile(filename, ios::app);
             if (!userFile.is_open()) {
