@@ -1,35 +1,9 @@
 ﻿#include <iostream>
 #include <conio.h>
+#include "Student.h"
 
 using namespace std;
 
-class Student
-{
-public:
-    // ФИО
-    char name[30];
-    // оценки
-    int marks[5];
-    // средний балл
-    double getAver()
-    {
-        double sum = 0;
-        for (int i = 0; i < 5; i++)
-        {
-            sum += marks[i];
-        }
-        return sum / 5;
-    }
-    // показать все оценки
-    void allMarks()
-    {
-        cout << "Оценки:" << endl;
-        for (int j = 0; j < 5; j++)
-        {
-            cout << marks[j] << endl;
-        }
-    }
-};
 struct Stud
 {
     // ФИО
