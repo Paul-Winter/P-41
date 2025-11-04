@@ -91,20 +91,52 @@ int main()
     //stud.allMarks();
     //cout << "Средний балл: " << stud.getAver() << endl;
 
-    cout << endl << "______________________________________________" << endl << endl;
+    Student* students = new Student[5]
+    {
+        {"Бочаров А.Р."},
+        {"Газарян Э.З."},
+        {"Дымочкина А.В."},
+        {"Лобозев И.С."}
+    };
 
-    Student stud;
-    cout << stud.getName() << endl;
-    stud.allMarks();
-    cout << "Средний балл: " << stud.getAver() << endl;       
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            students[i].setMark(7 + i, j);
+        }
+    }
 
+    //students[0].setMark(11, 0);
+    //students[0].setMark(11, 1);
+    //students[0].setMark(10, 2);
+    //students[0].setMark(11, 3);
+    //students[0].setMark(12, 4);
 
-    //cout << endl << "______________________________________________" << endl << endl;
+    //students[1].setMark(11, 0);
+    //students[1].setMark(12, 1);
+    //students[1].setMark(10, 2);
+    //students[1].setMark(12, 3);
+    //students[1].setMark(11, 4);
 
-    //Student stud3("Сидоров А.Б.");
-    //cout << stud3.getName() << endl;
-    //stud3.allMarks();
-    //cout << "Средний балл: " << stud3.getAver() << endl;
+    //students[2].setMark(12, 0);
+    //students[2].setMark(12, 1);
+    //students[2].setMark(10, 2);
+    //students[2].setMark(10, 3);
+    //students[2].setMark(10, 4);
+
+    //students[3].setMark(11, 0);
+    //students[3].setMark(10, 1);
+    //students[3].setMark(10, 2);
+    //students[3].setMark(11, 3);
+    //students[3].setMark(11, 4);
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << endl << "______________________________________________________" << endl;
+        cout << "Студент: " << students[i].getName() << endl;
+        cout << "Средний балл: " << students[i].getAver() << endl;
+    }
 
     return 0;
 }

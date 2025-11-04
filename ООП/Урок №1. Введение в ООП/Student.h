@@ -28,6 +28,7 @@ public:
             marks[i] = 1;
         }
     }
+
     //~Student()
     //{
     //    if (name != nullptr)
@@ -40,6 +41,7 @@ public:
     //    }
     //    std::cout << "сработал деструктор" << std::endl;
     //}
+    
     // get-функция, аксессор, инспектор
     const char* getName()
     {
