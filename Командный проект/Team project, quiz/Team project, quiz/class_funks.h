@@ -126,61 +126,166 @@ class Password
     // Структура "User" (Пользователь)
     struct User
     {
-        string name;
-        string password;
-        string quizstats;
-        vector<int> quizStats;
-        //Функция для записи данных пользователя в файл
-        void writeToFile(ofstream& file) const
+        int users;
+        int ID;
+        array<string,100> login;
+        array<string, 100> password;
+        array<int, 100> quizStats1;
+        array<int, 100> quizStats2;
+        array<int, 100> quizStats3;
+        array<int, 100> quizStats4;
+        array<int, 100> quizStats5;
+        User readusers(User user)
         {
-            file << name << " " << password << " ";
-            for (int stat : quizStats) {
-                file << stat << " ";
+            ifstream file("login.txt");
+            ifstream filepass("password.txt");
+            ifstream fileq1("quizstats1.txt");
+            ifstream fileq2("quizstats2.txt");
+            ifstream fileq3("quizstats3.txt");
+            ifstream fileq4("quizstats4.txt");
+            ifstream fileq5("quizstats5.txt");
+            if (file.is_open())
+            {
+                file >> user.users;
+                if (user.users == 0)
+                    return user;
+                for (int i = 0; i < user.users; i++)
+                {
+                    file >> user.login[i];
+                }
             }
-            file << endl;
-        }
-
-        //Функция для считывания данных пользователя из файла
-        static User readFromFile(ifstream& file)
-        {
-            User user;
-            file >> user.name >> user.password >> user.quizStats[0] >> user.quizStats[1] >> user.quizStats[2] >> user.quizStats[3] >> user.quizStats[4];
+            else
+                cout << "Не удалось открыть файл";
+            if (filepass.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    filepass >> user.password[i];
+                }
+            }
+            if (fileq1.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq1 >> user.quizStats1[i];
+                }
+            }
+            if (fileq2.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq2 >> user.quizStats2[i];
+                }
+            }
+            if (fileq3.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq3 >> user.quizStats3[i];
+                }
+            }
+            if (fileq4.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq4 >> user.quizStats4[i];
+                }
+            }
+            if (fileq5.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq5 >> user.quizStats5[i];
+                }
+            }
+            file.close();
+            filepass.close();
+            fileq1.close();
+            fileq2.close();
+            fileq3.close();
+            fileq4.close();
+            fileq5.close();
             return user;
         }
-        //Функция для записи всех пользователей в файл
-        void saveUsersToFile(const vector<User>& userList) {
-            ofstream file("users_list.dat", ios::out | ios::trunc);
-            if (!file.is_open()) {
-                cout << "Ошибка при открытии файла! " << endl;
-                return;
-            }
-            file << userList.size() << endl;
-            for (int i = 0; i < userList.size(); i++) {
-                file << userList[i].quizstats << " " << userList[i].name << endl;
-            }
-            file.close();
-        }
-
-        //Функция для считывания всех пользователей из файла
-        vector<User> loadUsersFromFile(const string& filename)
+        void deletefiles()
         {
-            vector<User> users;
-            ifstream file(filename);
-
-            if (!file.is_open())
+            remove("login.txt");
+            remove("password.txt");
+            remove("quizstats1.txt");
+            remove("quizstats2.txt");
+            remove("quizstats3.txt");
+            remove("quizstats4.txt");
+            remove("quizstats5.txt");
+        }
+        User writeusers(User user)
+        {
+            ofstream file("login.txt", ios_base::out);
+            ofstream filepass("password.txt", ios_base::out);
+            ofstream fileq1("quizstats1.txt", ios_base::out);
+            ofstream fileq2("quizstats2.txt", ios_base::out);
+            ofstream fileq3("quizstats3.txt", ios_base::out);
+            ofstream fileq4("quizstats4.txt", ios_base::out);
+            ofstream fileq5("quizstats5.txt", ios_base::out);
+            if (file.is_open())
             {
-                cout << "Ошибка при открытии файла! " << endl;
-                return users;
+                if (user.users == 0)
+                    return user;
+                file << user.users <<endl;
+                for (int i = 0; i < user.users; i++)
+                {
+                    file << user.login[i]<<endl;
+                }
             }
-
-            while (!file.eof())
+            if (filepass.is_open())
             {
-                users.push_back(User::readFromFile(file));
+                for (int i = 0; i < user.users; i++)
+                {
+                    filepass << user.password[i] << endl;
+                }
             }
-
+            if (fileq1.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq1 << user.quizStats1[i] << endl;
+                }
+            }
+            if (fileq2.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq2 << user.quizStats2[i] << endl;
+                }
+            }
+            if (fileq3.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq3 << user.quizStats3[i] << endl;
+                }
+            }
+            if (fileq4.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq4 << user.quizStats4[i] << endl;
+                }
+            }
+            if (fileq5.is_open())
+            {
+                for (int i = 0; i < user.users; i++)
+                {
+                    fileq5 << user.quizStats5[i] << endl;
+                }
+            }
             file.close();
-            cout << "Данные успешно считаны из файла! " << endl;
-            return users;
+            filepass.close();
+            fileq1.close();
+            fileq2.close();
+            fileq3.close();
+            fileq4.close();
+            fileq5.close();
+            return user;
         }
     };
     //Принцип формирования таблицы статистики пользователя
@@ -194,39 +299,8 @@ class Password
         cout << "|      " << filename << "    " << "  |        " << game << "        |        " << cinema << "        |    " << music << "     |" << travel << "\t\t\t|\t\t\t" << literature << "\t\t\t|   " << game + cinema + music + travel + literature << "  |" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
     }
-
-    User findUserByLogin(const string& filename, const string& login)
-    {
-        ifstream file(filename);
-        string line;
-        if (!file.is_open()) {
-            cout << "Не удалось открыть файл: " << filename << endl;
-            return User();
-        }
-        while (getline(file, line)) {
-            istringstream iss(line);
-            User user;
-            int answer;
-            if (iss >> user.name >> user.password)
-            {
-                while (iss >> answer)
-                {
-                    user.quizStats.push_back(answer);
-                }
-                if (user.name == login)
-                {
-                    return user;
-                }
-            }
-        }
-        return User();
-    }
     int regame(User user)
     {
-        FILE* users;
-        const char* filefolder = "C:\\Users\\P-41\\Командный проект\\Team project, quiz\\login.txt"; /*\\Student\\P-41\\Командный проект\\Team project, quiz\\Team project, quiz\\users.txt"*/
-        const string filename = "login.txt";
-        ofstream file("login.txt");
         cout << "\nВы попали вначало игры!\nВведите номер темы:\n1. Игры \n2. Кино \n3. Музыка \n4. Путешествия \n5. Литература\nВаш выбор: ";
         string zxc;
         int ans = 0;
@@ -237,7 +311,7 @@ class Password
         //ВИКТОРИНА
         switch (ans)
         {
-        case 1: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Игры\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
+        case 1: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Игры\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
             cout << "\n1. Какая игра является самой продаваемой в истории (на 2023 год)?\n1) Minecraft\n2) Grand Theft Auto V\n3) Tetris\n4) Wii Sports\nВаш ответ: ";
             cin >> atq[0];
             cout << "\n2. Как зовут главного героя серии игр The Legend of Zelda?\n1) Линк\n2) Зельда\n3) Гэннон\n4) Эпоонаs\nВаш ответ: ";
@@ -259,7 +333,7 @@ class Password
             cout << "\n10. Как зовут антагониста в серии игр Portal?\n1) GLaDOS\n2) Уитли\n3) Кейв Джонсон\n4) П - Боди\nВаш ответ: ";
             cin >> atq[9];
             break;
-        case 2: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Кино\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
+        case 2: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Кино\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
             cout << "1. Кто режиссер фильма «Крестный отец» (1972)? \n1) Мартин Скорсезе\n2) Фрэнсис Форд Коппола\n3) Стивен Спилберг\n4) Стэнли Кубрик\nВаш ответ: ";
             cin >> atq[0];
             cout << "2. Какой актер сыграл Джокера в фильме «Темный рыцарь» (2008)? \n1) Джаред Лето\n2) Хоакин Феникс\n3) Хит Леджер\n4) Джек Николсон\nВаш ответ: ";
@@ -281,8 +355,7 @@ class Password
             cout << "10. Какой актер сыграл Тони Старка / Железного человека в кинематографической вселенной Marvel?\n1) Крис Эванс\n2) Роберт Дауни-младший\n3) Крис Хемсворт\n4) Марк Руффало\nВаш ответ: ";
             cin >> atq[9];
             break;
-        case 3: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Музыка\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
-
+        case 3: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Музыка\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
             cout << "1. Кто является «королем рок-н-ролла»?\n1) Элвис Пресли\n2) Боб Дилан\n3) Чак Берри\n4) The Beatles\nВаш ответ: ";
             cin >> atq[0];
             cout << "2. Какая группа исполнила хит «Bohemian Rhapsody»?\n1) The Rolling Stones\n2) Led Zeppelin\n3) Pink Floyd\n4) Queen\nВаш ответ: ";
@@ -304,7 +377,7 @@ class Password
             cout << "10. Кто автор симфонической поэмы «Так говорил Заратустра», известной по фильму «Космическая одиссея 2001 года»?\n1) Иоганн Штраус\n2) Рихард Штраус\n3) Рихард Вагнер\n4) Людвиг ван Бетховен\nВаш ответ: ";
             cin >> atq[9];
             break;
-        case 4: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Путешествие\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
+        case 4: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Путешествие\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
             cout << "На берегу какого залива стоит город Санкт-Петербург?\n1) Финский залив\n2) Ботнический залив\n3) Рижский залив\n4) Калининградский залив\nВаш ответ: ";
             cin >> atq[0];
             cout << "2. В какой стране находится регион Каталония, столицей которого является Барселона?\n1) Франция\n2) Италия\n3) Испания\n4) Португалия\nВаш ответ: ";
@@ -326,7 +399,7 @@ class Password
             cout << "10. Какой город является столицей Исландии?\n1) Осло\n2) Копенгаген\n3) Хельсинки\n4) Рейкьявик\nВаш ответ: ";
             cin >> atq[9];
             break;
-        case 5: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Литература\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе, в ответ писать название произведения без скобок)\nУдачи!\n";
+        case 5: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Литература\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе, в ответ писать название произведения без скобок)\nУдачи!\n";
             cout << "1. Кто автор романа «Мастер и Маргарита»?\n1) Федор Достоевский\n2) Михаил Булгаков\n3) Лев Толстой\n4) Александр Пушкин\nВаш ответ: ";
             cin >> atq[0];
             cout << "2. Какое произведение написал Франц Кафка?\n1) «Процесс»\n2) «1984»\n3) «Скотный двор»\n4) «На Западном фронте без перемен»\nВаш ответ: ";
@@ -367,13 +440,12 @@ class Password
             if (atq[8] == "4" || atq[8] == "Dungeons & Dragons (настольная)" || atq[8] == "dungeons & dragons (настольная)") ca++;
             if (atq[9] == "1" || atq[9] == "GLaDOS" || atq[9] == "glados") ca++;
             cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Игры";
-            if (ca > user.quizStats[0])
+            if (ca > user.quizStats1[user.ID])
             {
-                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[0];
-                user.quizStats[0] = ca;
+                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats1[user.ID];
+                user.quizStats1[user.ID] = ca;
             }
-            user.writeToFile(file);
-            table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+            table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
             break;
         case 2:
             if (atq[0] == "2" || atq[0] == "Фрэнсис Форд Коппола" || atq[0] == "фрэнсис форд коппола") ca++;
@@ -387,13 +459,12 @@ class Password
             if (atq[8] == "3" || atq[8] == "Стэнли Кубрик" || atq[8] == "стэнли кубрик") ca++;
             if (atq[9] == "2" || atq[9] == "Роберт Дауни-младший" || atq[9] == "роберт дауни-младший") ca++;
             cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-            if (ca > user.quizStats[1])
+            if (ca > user.quizStats2[1])
             {
-                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[1];
-                user.quizStats[1] = ca;
+                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats2[user.ID];
+                user.quizStats2[1] = ca;
             }
-            user.writeToFile(file);
-            table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+            table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
             break;
         case 3: cout << "Музыка";
             if (atq[0] == "1" || atq[0] == "Элвис Пресли" || atq[0] == "элвис пресли") ca++;
@@ -407,13 +478,12 @@ class Password
             if (atq[8] == "1" || atq[8] == "Петр Чайковский" || atq[8] == "петр чайковский") ca++;
             if (atq[9] == "2" || atq[9] == "Рихард Штраус" || atq[9] == "рихард штраус") ca++;
             cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-            if (ca > user.quizStats[2])
+            if (ca > user.quizStats3[user.ID])
             {
-                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[2];
-                user.quizStats[2] = ca;
+                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats3[user.ID];
+                user.quizStats3[user.ID] = ca;
             }
-            user.writeToFile(file);
-            table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+            table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
             break;
         case 4: cout << "Путешествие";
             if (atq[0] == "1" || atq[0] == "Финский залив" || atq[0] == "финский залив") ca++;
@@ -427,13 +497,12 @@ class Password
             if (atq[8] == "1" || atq[8] == "Руб-эль-Хали" || atq[8] == "руб-эль-хали") ca++;
             if (atq[9] == "4" || atq[9] == "Рейкьявик" || atq[9] == "рейкьявик") ca++;
             cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-            if (ca > user.quizStats[3])
+            if (ca > user.quizStats4[user.ID])
             {
-                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[3];
-                user.quizStats[3] = ca;
+                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats4[user.ID];
+                user.quizStats4[user.ID] = ca;
             }
-            user.writeToFile(file);
-            table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+            table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
             break;
         case 5: cout << "Литература";
             if (atq[0] == "2" || atq[0] == "Михаил Булгаков" || atq[0] == "михаил булгаков") ca++;
@@ -447,14 +516,12 @@ class Password
             if (atq[8] == "1" || atq[8] == "Антон Чехов" || atq[8] == "антон чехов") ca++;
             if (atq[9] == "2" || atq[9] == "Фэнтези" || atq[9] == "фэнтези") ca++;
             cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-            if (ca > user.quizStats[4])
+            if (ca > user.quizStats5[user.ID])
             {
-                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[4];
-                user.quizStats[4] = ca;
+                cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats5[user.ID];
+                user.quizStats5[user.ID] = ca;
             }
-            user.writeToFile(file);
-
-            table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+            table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
             break;
         }
         while (zxc != "+" || zxc != "-")
@@ -464,6 +531,8 @@ class Password
             if (zxc == "-")
             {
                 cout << "Увидимся в следующий раз!\n\nПока!";
+                user.deletefiles();
+                user.writeusers(user);
                 break;
             }
             else if (zxc == "+")

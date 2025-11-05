@@ -7,6 +7,7 @@
 #include "class_funks.h"
 
 using namespace std;
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -14,16 +15,7 @@ int main()
     cout << "Добро пожаловать!";
     cout << "Это викторина, Созданная студентами группы P-41! \nДымочкиной, Середа, Бочаровым, Лобозевым, Газаряном.\nбыло тяжко, посторайтесь подумать над ответами!)" << endl << endl << endl;
     ofstream file("login.txt");
-    //      Ядро
-    char log[10];
     string zxc;
-    FILE* users;
-    menu Menu;
-    const char* filefolder = "C:\\Users\\P-41\\Командный проект\\Team project, quiz\\login.txt";
-    const string filename = "login.txt";
-    ifstream in("C:\\Users\\P-41\\Командный проект\\Team project, quiz\\login.txt");  // Открываем файл для чтения  
-    in >> log;
-    in.close();
     while (zxc != "+" || zxc != "-")
     {
         cout << "Хотите сыграть в игру?(+/-): ";
@@ -38,36 +30,111 @@ int main()
             cout << "\nВы зарегистрированы?(+/-)\nОтвет:";
             cin >> zxc;
             User user;
+            user.users = 0;
+            user.ID = 0;
+            user.readusers(user);
             if (zxc == "+")
             {
-                system("cls");
-                Password pass;
-                pass.Entrance();
+                if (user.users == 0)
+                {
+                    cout << "\nНет зарегистрированных пользователей!";
+                    zxc = "-";
+                    break;
+                }
+                cout << "Введите логин: ";
+                string temp,temppass;
+                cin >> temp;
+                cout << "\nВведите пароль: ";
+                cin >> temppass;
+                for (int i = 0; i < user.users; i++)
+                {
+                    if (user.login[i] == temp)
+                    {
+                        user.ID = i;
+                        if (user.password[user.ID]!= temppass)
+                        {
+                            cout << "\nНеверный пароль! Осталось попыток: 2\n";
+                            cout << "Введите пароль: ";
+                            cin >> temppass;
+                            if (user.password[user.ID] != temppass)
+                            {
+                                cout << "\nНеверный пароль! Осталось попыток: 1\n";
+                                cout << "Введите пароль: ";
+                                cin >> temppass;
+                                if (user.password[user.ID] != temppass)
+                                {
+                                    cout << "\nНеверный пароль! Попыток больше не осталось, увидимся в следующий раз!\n";
+                                    return 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (user.ID == 0)
+                {
+                    cout << "Пользователь с таким именем не найден!";
+                }
+                else
+                {
+                    cout << "\nПриветствуем, " << user.login[user.ID] << ", рады видеть вас снова!";
+                }
             }
             else
             {
-                system("cls");
-                Password pass;
-                pass.Sign_up();
-                user.quizStats = { 0,0,0,0,0 };
+                cout << "Введите логин: ";
+                string temp, temppass;
+                cin >> temp;
+                cout << "\nВведите пароль: ";
+                cin >> temppass;
+                for (int i = 0; i < user.users; i++)
+                {
+                    if (user.login[i] == temp)
+                    {
+                        user.ID = i;
+                        cout << "\nАккаунт с таким именем уже зарегистрирован!\n";
+                        if (user.password[user.ID] != temppass)
+                        {
+                            cout << "\nНеверный пароль! Осталось попыток: 2\n";
+                            cout << "Введите пароль: ";
+                            cin >> temppass;
+                            if (user.password[user.ID] != temppass)
+                            {
+                                cout << "\nНеверный пароль! Осталось попыток: 1\n";
+                                cout << "Введите пароль: ";
+                                cin >> temppass;
+                                if (user.password[user.ID] != temppass)
+                                {
+                                    cout << "\nНеверный пароль! Попыток больше не осталось, увидимся в следующий раз!\n";
+                                    return 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (user.ID == 0)
+                {
+                    user.users++;
+                    user.ID = user.users;
+                    user.login[user.ID] = temp;
+                    user.password[user.ID] = temppass;
+                    user.quizStats1[user.ID] = 0;
+                    user.quizStats2[user.ID] = 0;
+                    user.quizStats3[user.ID] = 0;
+                    user.quizStats4[user.ID] = 0;
+                    user.quizStats5[user.ID] = 0;
+                    cout << "\nАккаунт успешно зарегистрирован!";
+                }
             }
-            user.writeToFile(file);
-            table(log, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+            table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
             cout << "\n\nВведите номер темы:\n1. Игры \n2. Кино \n3. Музыка \n4. Путешествия \n5. Литература\nВаш выбор: ";
             int ans = 0;
             string atq[10];
             int ca = 0;
             cin >> ans;
-            ofstream userFile(filename, ios::app);
-            if (!userFile.is_open()) {
-                cout << "Ошибка при открытии файла!" << endl;
-                return 1;
-            }
-            user.writeToFile(userFile);
             //ВИКТОРИНА
             switch (ans)
             {
-            case 1: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Игры\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
+            case 1: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Игры\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
                 cout << "\n1. Какая игра является самой продаваемой в истории (на 2023 год)?\n1) Minecraft\n2) Grand Theft Auto V\n3) Tetris\n4) Wii Sports\nВаш ответ: ";
                 cin >> atq[0];
                 cout << "\n2. Как зовут главного героя серии игр The Legend of Zelda?\n1) Линк\n2) Зельда\n3) Гэннон\n4) Эпоонаs\nВаш ответ: ";
@@ -90,7 +157,7 @@ int main()
                 cin >> atq[9];
                 break;
                 //Викторина игры
-            case 2: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Кино\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
+            case 2: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Кино\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
                 cout << "1. Кто режиссер фильма «Крестный отец» (1972)? \n1) Мартин Скорсезе\n2) Фрэнсис Форд Коппола\n3) Стивен Спилберг\n4) Стэнли Кубрик\nВаш ответ: ";
                 cin >> atq[0];
                 cout << "2. Какой актер сыграл Джокера в фильме «Темный рыцарь» (2008)? \n1) Джаред Лето\n2) Хоакин Феникс\n3) Хит Леджер\n4) Джек Николсон\nВаш ответ: ";
@@ -112,7 +179,7 @@ int main()
                 cout << "10. Какой актер сыграл Тони Старка / Железного человека в кинематографической вселенной Marvel?\n1) Крис Эванс\n2) Роберт Дауни-младший\n3) Крис Хемсворт\n4) Марк Руффало\nВаш ответ: ";
                 cin >> atq[9];
                 break;
-            case 3: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Музыка\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
+            case 3: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Музыка\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
                 cout << "1. Кто является «королем рок-н-ролла»?\n1) Элвис Пресли\n2) Боб Дилан\n3) Чак Берри\n4) The Beatles\nВаш ответ: ";
                 cin >> atq[0];
                 cout << "2. Какая группа исполнила хит «Bohemian Rhapsody»?\n1) The Rolling Stones\n2) Led Zeppelin\n3) Pink Floyd\n4) Queen\nВаш ответ: ";
@@ -134,7 +201,7 @@ int main()
                 cout << "10. Кто автор симфонической поэмы «Так говорил Заратустра», известной по фильму «Космическая одиссея 2001 года»?\n1) Иоганн Штраус\n2) Рихард Штраус\n3) Рихард Вагнер\n4) Людвиг ван Бетховен\nВаш ответ: ";
                 cin >> atq[9];
                 break;
-            case 4: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Путешествие\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
+            case 4: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Путешествие\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе)\nУдачи!\n";
                 cout << "На берегу какого залива стоит город Санкт-Петербург?\n1) Финский залив\n2) Ботнический залив\n3) Рижский залив\n4) Калининградский залив\nВаш ответ: ";
                 cin >> atq[0];
                 cout << "2. В какой стране находится регион Каталония, столицей которого является Барселона?\n1) Франция\n2) Италия\n3) Испания\n4) Португалия\nВаш ответ: ";
@@ -156,7 +223,7 @@ int main()
                 cout << "10. Какой город является столицей Исландии?\n1) Осло\n2) Копенгаген\n3) Хельсинки\n4) Рейкьявик\nВаш ответ: ";
                 cin >> atq[9];
                 break;
-            case 5: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.name << "\nНачинаем викторину на тему: Литература\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе, в ответ писать название произведения без скобок)\nУдачи!\n";
+            case 5: cout << "\n\n\n\n\n\n\n\n\nПривет, " << user.login[user.ID] << "\nНачинаем викторину на тему: Литература\nТебе будет задано 10 вопросов с 1 правильным ответом, каждый вопрос оценивается в 1 балл\nНа вопросы можно отвечать номером ответа или выписать ответ(как в самом ответе, в ответ писать название произведения без скобок)\nУдачи!\n";
                 cout << "1. Кто автор романа «Мастер и Маргарита»?\n1) Федор Достоевский\n2) Михаил Булгаков\n3) Лев Толстой\n4) Александр Пушкин\nВаш ответ: ";
                 cin >> atq[0];
                 cout << "2. Какое произведение написал Франц Кафка?\n1) «Процесс»\n2) «1984»\n3) «Скотный двор»\n4) «На Западном фронте без перемен»\nВаш ответ: ";
@@ -197,13 +264,12 @@ int main()
                 if (atq[8] == "4" || atq[8] == "Dungeons & Dragons (настольная)" || atq[8] == "dungeons & dragons (настольная)") ca++;
                 if (atq[9] == "1" || atq[9] == "GLaDOS" || atq[9] == "glados") ca++;
                 cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Игры";
-                if (ca > user.quizStats[0])
+                if (ca > user.quizStats1[user.ID])
                 {
-                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[0];
-                    user.quizStats[0] = ca;
+                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats1[user.ID];
+                    user.quizStats1[user.ID] = ca;
                 }
-                user.writeToFile(file);
-                table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+                table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
                 break;
             case 2:
                 if (atq[0] == "2" || atq[0] == "Фрэнсис Форд Коппола" || atq[0] == "фрэнсис форд коппола") ca++;
@@ -217,13 +283,12 @@ int main()
                 if (atq[8] == "3" || atq[8] == "Стэнли Кубрик" || atq[8] == "стэнли кубрик") ca++;
                 if (atq[9] == "2" || atq[9] == "Роберт Дауни-младший" || atq[9] == "роберт дауни-младший") ca++;
                 cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-                if (ca > user.quizStats[1])
+                if (ca > user.quizStats2[1])
                 {
-                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[1];
-                    user.quizStats[1] = ca;
+                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats2[user.ID];
+                    user.quizStats2[1] = ca;
                 }
-                user.writeToFile(file);
-                table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+                table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
                 break;
             case 3: cout << "Музыка";
                 if (atq[0] == "1" || atq[0] == "Элвис Пресли" || atq[0] == "элвис пресли") ca++;
@@ -237,13 +302,12 @@ int main()
                 if (atq[8] == "1" || atq[8] == "Петр Чайковский" || atq[8] == "петр чайковский") ca++;
                 if (atq[9] == "2" || atq[9] == "Рихард Штраус" || atq[9] == "рихард штраус") ca++;
                 cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-                if (ca > user.quizStats[2])
+                if (ca > user.quizStats3[user.ID])
                 {
-                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[2];
-                    user.quizStats[2] = ca;
+                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats3[user.ID];
+                    user.quizStats3[user.ID] = ca;
                 }
-                user.writeToFile(file);
-                table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+                table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
                 break;
             case 4: cout << "Путешествие";
                 if (atq[0] == "1" || atq[0] == "Финский залив" || atq[0] == "финский залив") ca++;
@@ -257,13 +321,12 @@ int main()
                 if (atq[8] == "1" || atq[8] == "Руб-эль-Хали" || atq[8] == "руб-эль-хали") ca++;
                 if (atq[9] == "4" || atq[9] == "Рейкьявик" || atq[9] == "рейкьявик") ca++;
                 cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-                if (ca > user.quizStats[3])
+                if (ca > user.quizStats4[user.ID])
                 {
-                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[3];
-                    user.quizStats[3] = ca;
+                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats4[user.ID];
+                    user.quizStats4[user.ID] = ca;
                 }
-                user.writeToFile(file);
-                table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+                table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
                 break;
             case 5: cout << "Литература";
                 if (atq[0] == "2" || atq[0] == "Михаил Булгаков" || atq[0] == "михаил булгаков") ca++;
@@ -277,13 +340,12 @@ int main()
                 if (atq[8] == "1" || atq[8] == "Антон Чехов" || atq[8] == "антон чехов") ca++;
                 if (atq[9] == "2" || atq[9] == "Фэнтези" || atq[9] == "фэнтези") ca++;
                 cout << "\n\nВикторина завершена! Вы дали " << ca << " правильных ответов по теме Кино";
-                if (ca > user.quizStats[4])
+                if (ca > user.quizStats5[user.ID])
                 {
-                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats[4];
-                    user.quizStats[4] = ca;
+                    cout << "\n\nПоздравляем! Ваш результат лучше прошлого! Прошлый результат: " << user.quizStats5[user.ID];
+                    user.quizStats5[user.ID] = ca;
                 }
-                user.writeToFile(file);
-                table(user.name, user.quizStats[0], user.quizStats[1], user.quizStats[2], user.quizStats[3], user.quizStats[4]);
+                table(user.login[user.ID], user.quizStats1[user.ID], user.quizStats2[user.ID], user.quizStats3[user.ID], user.quizStats4[user.ID], user.quizStats5[user.ID]);
                 break;
             }
             while (zxc != "+" || zxc != "-")
@@ -293,6 +355,8 @@ int main()
                 if (zxc == "-")
                 {
                     cout << "Увидимся в следующий раз!\n\nПока!";
+                    user.deletefiles();
+                    user.writeusers(user);
                     break;
                 }
                 else if (zxc == "+")
