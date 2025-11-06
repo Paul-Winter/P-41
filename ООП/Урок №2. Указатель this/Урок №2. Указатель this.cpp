@@ -42,6 +42,14 @@ public:
     }
 };
 
+class Bank
+{
+public:
+    int deposit;
+    static int budget;
+};
+int Bank::budget{ 1000000 };
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -50,10 +58,31 @@ int main()
     Point p2{ 5 };
     Point p3{ 42, 33 };
 
-    Human h1;
-    Human h2{ "John Doe" };
-    Human h3{ "John Doe", 44 };
-    Human h4{ "John Doe", 44, 12345678 };
+    //Human h1;
+    //Human h2{ "John Doe" };
+    //Human h3{ "John Doe", 44 };
+    //Human h4{ "John Doe", 44, 12345678 };
+
+    Bank filialStavropol{ 50000 };
+    Bank filialMikhailovsk{ 30000 };
+
+    cout << "Общий бюджет банка: " << Bank::budget << " рублей" << endl;
+    cout << "Ставропольский филиал: " << filialStavropol.deposit << " рублей" << endl;
+    cout << "Михайловский филиал: " << filialMikhailovsk.deposit << " рублей" << endl << endl;
+
+    cout << "Ставропольский филиал запросил деньги: " << endl;
+    Bank::budget = filialStavropol.budget - 100000;
+    filialStavropol.deposit += 100000;
+    cout << "Общий бюджет банка: " << Bank::budget << " рублей" << endl;
+    cout << "Ставропольский филиал: " << filialStavropol.deposit << " рублей" << endl;
+    cout << "Михайловский филиал: " << filialMikhailovsk.deposit << " рублей" << endl << endl;
+
+    cout << "Михайловский филиал запросил деньги: " << endl;
+    Bank::budget = filialMikhailovsk.budget - 150000;
+    filialMikhailovsk.deposit += 150000;
+    cout << "Общий бюджет банка: " << Bank::budget << " рублей" << endl;
+    cout << "Ставропольский филиал: " << filialStavropol.deposit << " рублей" << endl;
+    cout << "Михайловский филиал: " << filialMikhailovsk.deposit << " рублей" << endl << endl;
 
     return 0;
 }
