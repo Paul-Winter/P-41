@@ -283,11 +283,11 @@ class Password
     void table(string filename, int game, int cinema, int music, int travel, int literature)
     {
         cout << "\n\n -------------------------------------------------------------------------------------------------- " << endl;
-        cout << "|                                 Статистика пользователя                                          |" << endl;
+        cout << "|\t\t\tСтатистика пользователя\t\t\t|" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
-        cout << "|      Имя      |   Игры    |   Кино   |    Музыка    |  Путешествие  |  Литература  |    Баллы    |" << endl;
+        cout << "|\tИмя\t|\tИгры\t|\tКино\t|\tМузыка\t|\tПутешествие\t|\tЛитература\t|\tБаллы\t|" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
-        cout << "|\t\t" << filename << "\t\t" << "|\t" << game <<"\t|\t" << cinema << "\t|\t\t" << music << "\t\t|\t\t\t" << travel << "\t\t\t|\t\t\t" << literature << "\t\t\t|\t\t" << game + cinema + music + travel + literature << "\t\t|" << endl;
+        cout << "|\t" << filename << "\t" << "|\t" << game <<"\t|\t" << cinema << "\t|\t" << music << "\t|\t" << travel << "\t|\t" << literature << "\t|\t" << game + cinema + music + travel + literature << "\t|" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
     }
     int regame(User user)
