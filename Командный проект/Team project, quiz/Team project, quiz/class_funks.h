@@ -287,7 +287,7 @@ class Password
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
         cout << "|      Имя      |   Игры    |   Кино   |    Музыка    |  Путешествие  |  Литература  |    Баллы    |" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
-        cout << "|" << filename << "|\t" << game <<"\t|\t" << cinema << "\t|\t" << music << "\t|\t" << travel << "\t|\t" << literature << "\t|\t" << game + cinema + music + travel + literature << "\t|" << endl;
+        cout << "|  " << filename << "  |\t" << game <<"\t|\t" << cinema << "\t|\t" << music << "\t|\t" << travel << "\t|\t" << literature << "\t|\t" << game + cinema + music + travel + literature << "\t|" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
     }
     int regame(User user)
