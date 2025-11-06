@@ -2,30 +2,58 @@
 
 using namespace std;
 
-struct Point
+class Point
 {
     int x;
     int y;
+public:
+    int getX() { return x; }
+    int getY() { return y; }
+
+    Point() : x{ 0 }, y{ 0 } {}
+    Point(int a) : x{ a }, y{ a } {}
+    Point(int pX, int pY) : x{ pX }, y{ pY } {}
+};
+
+class Human
+{
+    char* name;
+    int age;
+    long id;
+public:
+    Human(const char* nameP, int ageP, long idP) :
+        name{ new char[strlen(nameP) + 1] }, age{ ageP }, id{ idP }
+    {
+        cout << "Конструктор имени, возраста и паспорта" << endl;
+    }
+    Human(const char* nameP, int ageP) :
+        Human(new char[strlen(nameP) + 1], ageP, 0)
+    {
+        cout << "Конструктор имени и возраста" << endl;
+    }
+    Human(const char* nameP) : 
+        Human(new char[strlen(nameP) + 1], 0, 0)
+    {
+        cout << "Конструктор имени" << endl;
+    }
+    Human() : Human("John Doe", 0, 0)
+    {
+        cout << "Конструктор по умолчанию" << endl;
+    }
 };
 
 int main()
 {
     setlocale(LC_ALL, "");
 
-    int number = 12;    // копирующая инициализация
-    int value(42);      // прямая инициализация
-    int size{ 33 };     // унифицированная иницилизация
+    Point p1;
+    Point p2{ 5 };
+    Point p3{ 42, 33 };
 
-    cout << "number = " << number << endl;
-    cout << "value = " << value << endl;
-    cout << "size = " << size << endl;
-
-    const float goodTemp{ 36.6 };
-    int grades[4]{ 2,3,4,5 };
-    int matrix[2][2]{ {1,2}, {3,4} };
-    char* str{ new char[14] {"Hello, World!"} };
-    int& ref{ size };
-    Point point{ 10,-6 };
+    Human h1;
+    Human h2{ "John Doe" };
+    Human h3{ "John Doe", 44 };
+    Human h4{ "John Doe", 44, 12345678 };
 
     return 0;
 }
