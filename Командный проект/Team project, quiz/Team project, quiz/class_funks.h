@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <array>
+#include <cstdio>
 
 using namespace std;
 
@@ -128,87 +129,82 @@ class Password
     {
         int users;
         int ID;
-        array<string,100> login;
+        array<string, 100> login;
         array<string, 100> password;
         array<int, 100> quizStats1;
         array<int, 100> quizStats2;
         array<int, 100> quizStats3;
         array<int, 100> quizStats4;
         array<int, 100> quizStats5;
-        User readusers(User user)
+
+        void readusers()
         {
-            ifstream file("login.txt");
-            ifstream filepass("password.txt");
-            ifstream fileq1("quizstats1.txt");
-            ifstream fileq2("quizstats2.txt");
-            ifstream fileq3("quizstats3.txt");
-            ifstream fileq4("quizstats4.txt");
-            ifstream fileq5("quizstats5.txt");
-            if (file.is_open())
-            {
-                file >> user.users;
-                if (user.users == 0)
-                    return user;
-                for (int i = 0; i < user.users; i++)
-                {
-                    file >> user.login[i];
-                }
+            ifstream usersCountFile("userscount.txt");
+            ifstream loginFile("login.txt");
+            ifstream passwordFile("pass.txt");
+            ifstream quizStats1File("quizstats1.txt");
+            ifstream quizStats2File("quizstats2.txt");
+            ifstream quizStats3File("quizstats3.txt");
+            ifstream quizStats4File("quizstats4.txt");
+            ifstream quizStats5File("quizstats5.txt");
+
+            if (usersCountFile.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 1" << endl;
+                return;
             }
-            else
-                cout << "Не удалось открыть файл";
-            if (filepass.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    filepass >> user.password[i];
-                }
+            if (loginFile.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 2" << endl;
+                return;
             }
-            if (fileq1.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq1 >> user.quizStats1[i];
-                }
+            if (!passwordFile.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 3" << endl;
+                return;
             }
-            if (fileq2.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq2 >> user.quizStats2[i];
-                }
+            if (!quizStats1File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 4" << endl;
+                return;
             }
-            if (fileq3.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq3 >> user.quizStats3[i];
-                }
+            if (!quizStats2File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 5" << endl;
+                return;
             }
-            if (fileq4.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq4 >> user.quizStats4[i];
-                }
+            if (!quizStats3File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 6" << endl;
+                return;
             }
-            if (fileq5.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq5 >> user.quizStats5[i];
-                }
+            if (!quizStats4File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 7" << endl;
+                return;
             }
-            file.close();
-            filepass.close();
-            fileq1.close();
-            fileq2.close();
-            fileq3.close();
-            fileq4.close();
-            fileq5.close();
-            return user;
+            if (!quizStats5File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 8" << endl;
+                return;
+            }
+
+            usersCountFile >> users;
+            usersCountFile.close();
+
+            for (int i = 0; i < users; ++i) {
+                loginFile >> login[i];
+                passwordFile >> password[i];
+                quizStats1File >> quizStats1[i];
+                quizStats2File >> quizStats2[i];
+                quizStats3File >> quizStats3[i];
+                quizStats4File >> quizStats4[i];
+                quizStats5File >> quizStats5[i];
+            }
+
+            loginFile.close();
+            passwordFile.close();
+            quizStats1File.close();
+            quizStats2File.close();
+            quizStats3File.close();
+            quizStats4File.close();
+            quizStats5File.close();
         }
         void deletefiles()
         {
+            remove("userscount.txt");
             remove("login.txt");
             remove("password.txt");
             remove("quizstats1.txt");
@@ -217,86 +213,81 @@ class Password
             remove("quizstats4.txt");
             remove("quizstats5.txt");
         }
-        User writeusers(User user)
+        void writeusers()
         {
-            ofstream file("login.txt", ios_base::out);
-            ofstream filepass("password.txt", ios_base::out);
-            ofstream fileq1("quizstats1.txt", ios_base::out);
-            ofstream fileq2("quizstats2.txt", ios_base::out);
-            ofstream fileq3("quizstats3.txt", ios_base::out);
-            ofstream fileq4("quizstats4.txt", ios_base::out);
-            ofstream fileq5("quizstats5.txt", ios_base::out);
-            if (file.is_open())
-            {
-                if (user.users == 0)
-                    return user;
-                file << user.users <<endl;
-                for (int i = 0; i < user.users; i++)
-                {
-                    file << user.login[i]<<endl;
-                }
+            ofstream usersCountFile("userscount.txt");
+            ofstream loginFile("login.txt");
+            ofstream passwordFile("pass.txt");
+            ofstream quizStats1File("quizstats1.txt");
+            ofstream quizStats2File("quizstats2.txt");
+            ofstream quizStats3File("quizstats3.txt");
+            ofstream quizStats4File("quizstats4.txt");
+            ofstream quizStats5File("quizstats5.txt");
+
+            if (usersCountFile.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 1" << endl;
+                return;
             }
-            if (filepass.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    filepass << user.password[i] << endl;
-                }
+            if (loginFile.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 2" << endl;
+                return;
             }
-            if (fileq1.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq1 << user.quizStats1[i] << endl;
-                }
+            if (!passwordFile.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 3" << endl;
+                return;
             }
-            if (fileq2.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq2 << user.quizStats2[i] << endl;
-                }
+            if (!quizStats1File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 4" << endl;
+                return;
             }
-            if (fileq3.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq3 << user.quizStats3[i] << endl;
-                }
+            if (!quizStats2File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 5" << endl;
+                return;
             }
-            if (fileq4.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq4 << user.quizStats4[i] << endl;
-                }
+            if (!quizStats3File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 6" << endl;
+                return;
             }
-            if (fileq5.is_open())
-            {
-                for (int i = 0; i < user.users; i++)
-                {
-                    fileq5 << user.quizStats5[i] << endl;
-                }
+            if (!quizStats4File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 7" << endl;
+                return;
             }
-            file.close();
-            filepass.close();
-            fileq1.close();
-            fileq2.close();
-            fileq3.close();
-            fileq4.close();
-            fileq5.close();
-            return user;
+            if (!quizStats5File.is_open() != true) {
+                cout << "Ошибка при открытии одного из файлов! Номер файла: 8" << endl;
+                return;
+            }
+
+
+            usersCountFile << users << endl;
+
+            for (int i = 0; i < users; ++i) {
+                loginFile << login[i] << " " << endl;
+                passwordFile << password[i] << " " << endl;
+                quizStats1File << quizStats1[i] << " " << endl;
+                quizStats2File << quizStats2[i] << " " << endl;
+                quizStats3File << quizStats3[i] << " " << endl;
+                quizStats4File << quizStats4[i] << " " << endl;
+                quizStats5File << quizStats5[i] << " " << endl;
+            }
+            usersCountFile.close();
+            loginFile.close();
+            passwordFile.close();
+            quizStats1File.close();
+            quizStats2File.close();
+            quizStats3File.close();
+            quizStats4File.close();
+            quizStats5File.close();
         }
     };
     //Принцип формирования таблицы статистики пользователя
     void table(string filename, int game, int cinema, int music, int travel, int literature)
     {
-        cout << " -------------------------------------------------------------------------------------------------- " << endl;
+        cout << "\n\n -------------------------------------------------------------------------------------------------- " << endl;
         cout << "|                                 Статистика пользователя                                          |" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
         cout << "|      Имя      |   Игры    |   Кино   |    Музыка    |  Путешествие  |  Литература  |    Баллы    |" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
-        cout << "|      " << filename << "    " << "  |        " << game << "        |        " << cinema << "        |    " << music << "     |" << travel << "\t\t\t|\t\t\t" << literature << "\t\t\t|   " << game + cinema + music + travel + literature << "  |" << endl;
+        cout << "|\t\t" << filename << "\t\t" << "|\t" << game <<"\t|\t" << cinema << "\t|\t\t" << music << "\t\t|\t\t\t" << travel << "\t\t\t|\t\t\t" << literature << "\t\t\t|\t\t" << game + cinema + music + travel + literature << "\t\t|" << endl;
         cout << " -------------------------------------------------------------------------------------------------- " << endl;
     }
     int regame(User user)
@@ -532,7 +523,7 @@ class Password
             {
                 cout << "Увидимся в следующий раз!\n\nПока!";
                 user.deletefiles();
-                user.writeusers(user);
+                user.writeusers();
                 break;
             }
             else if (zxc == "+")

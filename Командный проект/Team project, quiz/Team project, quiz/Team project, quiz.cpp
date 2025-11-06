@@ -32,16 +32,17 @@ int main()
             User user;
             user.users = 0;
             user.ID = 0;
-            user.readusers(user);
+            user.readusers();
+            // cout << user.users << user.login[0] << user.password[0] << user.quizStats1[0] << user.quizStats2[0] << user.quizStats3[0] << user.quizStats4[0] << user.quizStats5[0];
             if (zxc == "+")
             {
                 if (user.users == 0)
                 {
-                    cout << "\nНет зарегистрированных пользователей!";
+                    cout << "\nНет зарегистрированных пользователей!\n\n";
                     zxc = "-";
-                    break;
+                    continue;
                 }
-                cout << "Введите логин: ";
+                cout << "\nВведите логин: ";
                 string temp,temppass;
                 cin >> temp;
                 cout << "\nВведите пароль: ";
@@ -72,7 +73,7 @@ int main()
                 }
                 if (user.ID == 0)
                 {
-                    cout << "Пользователь с таким именем не найден!";
+                    cout << "\nПользователь с таким именем не найден!\n";
                 }
                 else
                 {
@@ -81,7 +82,7 @@ int main()
             }
             else
             {
-                cout << "Введите логин: ";
+                cout << "\nВведите логин: ";
                 string temp, temppass;
                 cin >> temp;
                 cout << "\nВведите пароль: ";
@@ -356,7 +357,7 @@ int main()
                 {
                     cout << "Увидимся в следующий раз!\n\nПока!";
                     user.deletefiles();
-                    user.writeusers(user);
+                    user.writeusers();
                     break;
                 }
                 else if (zxc == "+")
