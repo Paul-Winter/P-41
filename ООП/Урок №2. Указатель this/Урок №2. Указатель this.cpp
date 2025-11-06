@@ -50,6 +50,32 @@ public:
 };
 int Bank::budget{ 1000000 };
 
+class DateTime
+{
+    int milliseconds;
+    int seconds;
+    int minutes;
+    int hours;
+    int day;
+    int week;
+    int month;
+    int year;
+
+public:
+    int getDay()
+    {
+        return day;
+    }
+    void setDay(int day)
+    {
+        this->day = day;
+    }
+    void Print()
+    {
+        cout << day << "." << month << "." << year << endl;
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -63,6 +89,7 @@ int main()
     //Human h3{ "John Doe", 44 };
     //Human h4{ "John Doe", 44, 12345678 };
 
+    /*
     Bank filialStavropol{ 50000 };
     Bank filialMikhailovsk{ 30000 };
 
@@ -83,6 +110,7 @@ int main()
     cout << "Общий бюджет банка: " << Bank::budget << " рублей" << endl;
     cout << "Ставропольский филиал: " << filialStavropol.deposit << " рублей" << endl;
     cout << "Михайловский филиал: " << filialMikhailovsk.deposit << " рублей" << endl << endl;
+    */
 
     return 0;
 }
