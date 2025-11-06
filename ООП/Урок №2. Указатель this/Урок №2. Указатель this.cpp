@@ -62,6 +62,18 @@ class DateTime
     int year;
 
 public:
+    DateTime(int year, int month, int week, int day, int hours, int minutes, int seconds, int milliseconds)
+    {
+        this->year = year;
+        this->month = month;
+        this->week = week;
+        this->day = day;
+        this->hours = hours;
+        this->minutes = minutes;
+        this->seconds = seconds;
+        this->milliseconds = milliseconds;
+    }
+
     int getDay()
     {
         return day;
@@ -70,9 +82,10 @@ public:
     {
         this->day = day;
     }
+
     void Print()
     {
-        cout << day << "." << month << "." << year << endl;
+        cout << year << "." << month << "." << day << " " << hours << ":" << minutes << ":" << seconds << endl;
     }
 };
 
@@ -111,6 +124,9 @@ int main()
     cout << "Ставропольский филиал: " << filialStavropol.deposit << " рублей" << endl;
     cout << "Михайловский филиал: " << filialMikhailovsk.deposit << " рублей" << endl << endl;
     */
+
+    DateTime today{ 2025,11,45,6,19,58,0,0 };
+    today.Print();
 
     return 0;
 }
