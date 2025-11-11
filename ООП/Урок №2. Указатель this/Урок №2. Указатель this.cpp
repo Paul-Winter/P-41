@@ -78,7 +78,7 @@ public:
         return year;
     }
 
-    void setDay(int day)
+    Date& setDay(int day)
     {
         if (day < 1)
         {
@@ -92,8 +92,9 @@ public:
         {
             this->day = day;
         }
+        return *this;
     }
-    void setMonth(int month)
+    Date& setMonth(int month)
     {
         if (month < 1)
         {
@@ -107,10 +108,12 @@ public:
         {
             this->month = month;
         }
+        return *this;
     }
-    void setYear(int year)
+    Date& setYear(int year)
     {
         this->year = year;
+        return *this;
     }
 
     void Print()
@@ -158,9 +161,7 @@ int main()
     Date today;
     today.Print();
 
-    today.setYear(2025);
-    today.setMonth(11);
-    today.setDay(11);
+    today.setYear(2025).setMonth(11).setDay(11);
     today.Print();
 
     cout << today.getDay() << "." << today.getMonth() << "." << today.getYear() << endl;
