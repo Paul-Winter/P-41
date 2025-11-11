@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -27,10 +28,55 @@ public:
     }
 };
 
+class DynArray
+{
+    int* arr;
+    int size;
+public:
+    DynArray(int size) : arr{new int[size]}, size{size}
+    {
+        cout << "Создан дин. массив из: " << size << " эл-в: " << this << endl;
+    }
+    DynArray() : DynArray(5) {}
+    DynArray(const DynArray& object) : arr{new int[object.size]}, size{object.size}
+    {
+        for (int i = 0; i < size; i++)
+        {
+            arr[i] = object.arr[i];
+        }
+        cout << "Скопирован дин. массив из: " << size << " эл-в: " << this << endl;
+    }
+    ~DynArray()
+    {
+        cout << "Попытка освободить память " << arr << " указателя" << endl;
+        delete[] arr;
+        cout << "Удалён дин. массив из: " << size << " эл-в: " << this << endl;
+    }
+    int getElem(int index) { return arr[index]; }
+    void setElem(int value, int index) { arr[index] = value; }
+    void print()
+    {
+        for (int i = 0; i < size; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+    void randomize()
+    {
+        for (int i = 0; i < size; i++)
+        {
+            arr[i] = rand() % 10;
+        }
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
+    srand(time(NULL));
 
+    /*
     Fraction frac1{ 2,3 };
     Fraction frac2{ frac1 };
 
@@ -45,6 +91,16 @@ int main()
     frac3.print();
 
     cout << endl;
+    */
+
+    DynArray arr1{ 10 };
+    arr1.randomize();
+    cout << "arr1 elements: ";
+    arr1.print();
+
+    DynArray arr2{ arr1 };
+    cout << "arr2 elements: ";
+    arr2.print();
 
     return 0;
 }
