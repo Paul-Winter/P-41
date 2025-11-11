@@ -50,42 +50,72 @@ public:
 };
 int Bank::budget{ 1000000 };
 
-class DateTime
+class Date
 {
-    int milliseconds;
-    int seconds;
-    int minutes;
-    int hours;
     int day;
-    int week;
     int month;
     int year;
 
 public:
-    DateTime(int year, int month, int week, int day, int hours, int minutes, int seconds, int milliseconds)
+    Date(int day, int month, int year)
     {
-        this->year = year;
+        this->year  = year;
         this->month = month;
-        this->week = week;
-        this->day = day;
-        this->hours = hours;
-        this->minutes = minutes;
-        this->seconds = seconds;
-        this->milliseconds = milliseconds;
+        this->day   = day;
     }
+    Date() : Date(1, 1, 1970) {}
 
     int getDay()
     {
         return day;
     }
+    int getMonth()
+    {
+        return month;
+    }
+    int getYear()
+    {
+        return year;
+    }
+
     void setDay(int day)
     {
-        this->day = day;
+        if (day < 1)
+        {
+            this->day = 1;
+        }
+        else if (day > 31)
+        {
+            this->day = 31;
+        }
+        else
+        {
+            this->day = day;
+        }
+    }
+    void setMonth(int month)
+    {
+        if (month < 1)
+        {
+            this->month = 1;
+        }
+        else if (month > 12)
+        {
+            this->month = 12;
+        }
+        else
+        {
+            this->month = month;
+        }
+    }
+    void setYear(int year)
+    {
+        this->year = year;
     }
 
     void Print()
     {
-        cout << year << "." << month << "." << day << " " << hours << ":" << minutes << ":" << seconds << endl;
+        cout << day << "." << month << "." << year << endl;
     }
 };
 
@@ -125,8 +155,15 @@ int main()
     cout << "Михайловский филиал: " << filialMikhailovsk.deposit << " рублей" << endl << endl;
     */
 
-    DateTime today{ 2025,11,45,6,19,58,0,0 };
+    Date today;
     today.Print();
+
+    today.setYear(2025);
+    today.setMonth(11);
+    today.setDay(11);
+    today.Print();
+
+    cout << today.getDay() << "." << today.getMonth() << "." << today.getYear() << endl;
 
     return 0;
 }
