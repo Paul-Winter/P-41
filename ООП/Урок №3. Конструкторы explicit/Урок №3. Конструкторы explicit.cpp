@@ -33,7 +33,7 @@ class Array
     int size;
     int* array;
 public:
-    Array(int size) : size{ size }, array{ new int[size] } {}
+    explicit Array(int size) : size{ size }, array{ new int[size] } {}
     ~Array()
     {
         delete[] array;
@@ -88,7 +88,7 @@ int main()
         array.setValue(i, size - i);
     }
     print(array);
-    print(3);
+    array.print(3);
 
     return 0;
 }
