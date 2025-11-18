@@ -4,7 +4,7 @@ using namespace std;
 
 class Date
 {
-    const int day;
+    int day;
     int month;
     int year;
 public:
@@ -15,7 +15,15 @@ public:
     {
         return year;
     }
+    int getYear() const
+    {
+        return year;
+    }
     int getMonth()
+    {
+        return month;
+    }
+    int getMonth() const
     {
         return month;
     }
@@ -27,6 +35,7 @@ public:
     {
         return day;
     }
+
     void setYear(int value)
     {
         year = value;
@@ -35,10 +44,10 @@ public:
     {
         month = value;
     }
-    //void setDay(int value)
-    //{
-    //    day = value;
-    //}
+    void setDay(int value)
+    {
+        day = value;
+    }
 };
 
 int main()
@@ -46,11 +55,13 @@ int main()
     setlocale(LC_ALL, "");
 
     const Date today{ 18,11,2025 };
-    Date yersterday{ 17,11,2025 };
+    Date yesterday{ 18,11,2025 };
+
     cout << "Сегодня " << today.getDay() << "-е число" << endl;
-    cout << "Вчера было " << yersterday.getDay() << "-е число" << endl;
-    //today.setDay(19);
-    //cout << "Сегодня: " << today.getDay() << "." << today.getMonth() << "." << today.getYear() << endl;
+    cout << "Вчера было " << yesterday.getDay() << "-е число" << endl;
+
+    yesterday.setDay(17);
+    cout << "Вчера было " << yesterday.getDay() << "." << yesterday.getMonth() << "." << yesterday.getYear() << endl;
 
     return 0;
 }
