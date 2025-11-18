@@ -31,7 +31,7 @@ public:
     Fraction() : Fraction(1,1) {}
     void Print()
     {
-        cout << "(" << numerator << '/' << denominator << ")"<<endl;
+        cout << "(" << numerator << '/' << denominator << ")" << endl;
     }
     Fraction Mult(Fraction f1, int num)
     {
@@ -52,24 +52,19 @@ public:
 private:   
     int Nod(int numerator, int denominator)
     {
-
         while (numerator != 0 && denominator != 0)
         {
-
             if (numerator >= denominator)
             {
                 numerator %= denominator;
-
             }
             else
             {
                 denominator %= numerator;
-
             }
         }
         return numerator + denominator;
-    }
-    
+    }    
 };
 int main()
 {
