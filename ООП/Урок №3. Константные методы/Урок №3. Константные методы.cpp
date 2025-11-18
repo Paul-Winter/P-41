@@ -4,11 +4,12 @@ using namespace std;
 
 class Date
 {
+    const int currentYear;
     int day;
     int month;
     int year;
 public:
-    Date(int day, int month, int year) : day{day}, month{month}, year{year} {}
+    Date(int day, int month, int year) : currentYear{ 2025 }, day { day }, month{ month }, year{ year } {}
     Date() : Date(1,1,2022) {}
 
     int getYear()
@@ -34,6 +35,10 @@ public:
     int getDay() const
     {
         return day;
+    }
+    int getCurrYear() const
+    {
+        return currentYear;
     }
 
     void setYear(int value)
@@ -62,6 +67,8 @@ int main()
 
     yesterday.setDay(17);
     cout << "Вчера было " << yesterday.getDay() << "." << yesterday.getMonth() << "." << yesterday.getYear() << endl;
+
+    cout << "Сейчас идёт " << today.getCurrYear() << " год" << endl;
 
     return 0;
 }
