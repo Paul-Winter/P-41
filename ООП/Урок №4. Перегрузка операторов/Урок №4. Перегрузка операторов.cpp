@@ -60,11 +60,7 @@ public:
         return result;
     }
 
-    // перегрузка операторов
-    Point operator+(const Point& p)
-    {
-        return Point(this->x + p.x, this->y + p.y);
-    }
+    // перегрузка операторов функциями-членами класса
     Point operator++()
     {
         ++this->x;
@@ -88,6 +84,10 @@ public:
         Point point{ x,y };
         --(*this);
         return point;
+    }
+    Point operator+(const Point& p)
+    {
+        return Point(this->x + p.x, this->y + p.y);
     }
     Point operator-(const Point& p)
     {
@@ -118,7 +118,7 @@ public:
         return result;
     }
 
-    // арифметические операции между точками
+   // арифметические операции между точками
     Point sum(const Point& p1, const Point& p2)
     {       
         return Point(p1.x + p2.x, p1.y + p2.y);
@@ -142,9 +142,36 @@ public:
         return result;
     }
 
+    // перегрузка операторов дружественными функциями
     // сравнение двух точек
+    friend bool operator == (const Point& p1, const Point& p2)
+    {
+        return p1.x == p2.x && p1.y == p2.y;
+    }
+    friend bool operator != (const Point& p1, const Point& p2)
+    {
+        return !(p1.x == p2.x && p1.y == p2.y);
+    }
+    friend bool operator > (const Point& p1, const Point& p2)
+    {
+        return p1.x > p2.x && p1.y > p2.y;
+    }
+    friend bool operator < (const Point& p1, const Point& p2)
+    {
+        return p1.x < p2.x && p1.y < p2.y;
+    }
+    friend bool operator>=(const Point& p1, const Point& p2)
+    {
+        return p1.x >= p2.x && p1.y >= p2.y;
+    }
+    friend bool operator<=(const Point& p1, const Point& p2)
+    {
+        return p1.x <= p2.x && p1.y <= p2.y;
+    }
+
 };
 
+// переопределение операторов глобальными функциями
 Point operator+(const Point& p1, const Point& p2)
 {
     return Point(p1.x + p2.x, p1.y + p2.y);
@@ -215,6 +242,24 @@ int main()
     p2--;
     p1.print();
     p2.print();
+
+    bool point = p1 > p2;
+    cout << "p1 > p2 " << point << endl;
+
+    point = p1 < p2;
+    cout << "p1 < p2 " << point << endl;
+
+    point = p1 <= p2;
+    cout << "p1 <= p2 " << point << endl;
+
+    point = p1 >= p2;
+    cout << "p1 >= p2 " << point << endl;
+
+    point = p1 == p2;
+    cout << "p1 == p2 " << point << endl;
+
+    point = p1 != p2;
+    cout << "p1 != p2 " << point << endl;
 
     return 0;
 }
