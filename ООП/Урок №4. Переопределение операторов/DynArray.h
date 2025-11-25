@@ -21,6 +21,7 @@ public:
 	}
 	int& operator[](int);
 	int operator[](int) const;
+	void setrandom();
 	
 private:
 	int size;
