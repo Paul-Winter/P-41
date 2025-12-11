@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <time.h>
 
 using namespace std;
 
@@ -73,16 +74,304 @@ public:
     }
 };
 
+class Queue
+{
+    //  Очередь
+    int* Wait;
+
+    //  Максимальный размер очереди
+    int MaxQueueLength;
+
+    //  Текущий размер очереди
+    int QueueLength;
+
+public:
+    //  Конструктор
+    Queue(int m)
+    {
+        MaxQueueLength = m;
+        Wait = new int[MaxQueueLength];
+        QueueLength = 0;
+    }  
+
+    //  Деструктор
+    ~Queue()
+    {
+        delete[] Wait;
+    }
+
+    //  Добавление элемента
+    void Add(int n)
+    {
+        if (!IsFull())
+        {
+            Wait[QueueLength++] = n;
+        }
+    }
+
+    //  Извлечение элемента
+    int Extract()
+    {
+        if (!IsEmpty())
+        {
+            int temp = Wait[0];
+            for (int i = 1; i < QueueLength; i++)
+            {
+                Wait[i - 1] = Wait[i];
+            }
+            QueueLength--;
+            return temp;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    //  Очистка очереди
+    void Clear()
+    {
+        QueueLength = 0;
+    }
+
+    //  Проверка существования элементов в очереди
+    bool IsEmpty()
+    {
+        return QueueLength == 0;
+    }
+
+    //  Проверка на переполнение очереди
+    bool IsFull()
+    {
+        return QueueLength == MaxQueueLength;
+    }
+
+    //  Количество элементов в очереди
+    int GetCount()
+    {
+        return QueueLength;
+    }
+
+    //  Демонстрация очереди
+    void Show()
+    {
+        for (int i = 0; i < QueueLength; i++)
+        {
+            cout << Wait[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+class QueueRing
+{
+    //  Очередь
+    int* Wait;
+
+    //  Максимальный размер очереди
+    int MaxQueueLength;
+
+    //  Текущий размер очереди
+    int QueueLength;
+
+public:
+    //  Конструктор
+    QueueRing(int m)
+    {
+        MaxQueueLength = m;
+        Wait = new int[MaxQueueLength];
+        QueueLength = 0;
+    }
+
+    //  Деструктор
+    ~QueueRing()
+    {
+        delete[] Wait;
+    }
+
+    //  Добавление элемента
+    void Add(int n)
+    {
+        if (!IsFull())
+        {
+            Wait[QueueLength++] = n;
+        }
+    }
+
+    //  Извлечение элемента
+    bool Extract()
+    {
+        if (!IsEmpty())
+        {
+            int temp = Wait[0];
+            for (int i = 1; i < QueueLength; i++)
+            {
+                Wait[i - 1] = Wait[i];
+            }
+            Wait[QueueLength - 1]= temp;
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    //  Очистка очереди
+    void Clear()
+    {
+        QueueLength = 0;
+    }
+
+    //  Проверка существования элементов в очереди
+    bool IsEmpty()
+    {
+        return QueueLength == 0;
+    }
+
+    //  Проверка на переполнение очереди
+    bool IsFull()
+    {
+        return QueueLength == MaxQueueLength;
+    }
+
+    //  Количество элементов в очереди
+    int GetCount()
+    {
+        return QueueLength;
+    }
+
+    //  Демонстрация очереди
+    void Show()
+    {
+        for (int i = 0; i < QueueLength; i++)
+        {
+            cout << Wait[i] << " ";
+        }
+        cout << endl;
+    }    
+};
+
+class QueuePriority
+{
+    //  Очередь
+    int* Wait;
+
+    // Приоритет
+    int* Pri;
+
+    //  Максимальный размер очереди
+    int MaxQueueLength;
+
+    //  Текущий размер очереди
+    int QueueLength;
+
+public:
+    //  Конструктор
+    QueuePriority(int m)
+    {
+        MaxQueueLength = m;
+        Wait = new int[MaxQueueLength];
+        Pri = new int[MaxQueueLength];
+        QueueLength = 0;
+    }
+
+    //  Деструктор
+    ~QueuePriority()
+    {
+        delete[] Wait;
+        delete[] Pri;
+    }
+
+    //  Добавление элемента
+    void Add(int n, int p)
+    {
+        if (!IsFull())
+        {
+            Wait[QueueLength] = n;
+            Pri[QueueLength] = p;
+            QueueLength++;
+        }
+    }
+
+    //  Извлечение элемента
+    int Extract()
+    {
+        if (!IsEmpty())
+        {
+            int maxPri = Pri[0];
+            int posMaxPri = 0;
+            for (int i = 1; i < QueueLength; i++)
+            {
+                if (maxPri < Pri[i])
+                {
+                    maxPri = Pri[i];
+                    posMaxPri = i;
+                }
+            }
+            int tempEl = Wait[posMaxPri];
+            int tempPri = Pri[posMaxPri];
+            for (int i = posMaxPri; i < QueueLength; i++)
+            {
+                Wait[i] = Wait[i + 1];
+                Pri[i] = Pri[i + 1];
+            }
+            QueueLength--;
+            return tempEl;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    //  Очистка очереди
+    void Clear()
+    {
+        QueueLength = 0;
+    }
+
+    //  Проверка существования элементов в очереди
+    bool IsEmpty()
+    {
+        return QueueLength == 0;
+    }
+
+    //  Проверка на переполнение очереди
+    bool IsFull()
+    {
+        return QueueLength == MaxQueueLength;
+    }
+
+    //  Количество элементов в очереди
+    int GetCount()
+    {
+        return QueueLength;
+    }
+
+    //  Демонстрация очереди
+    void Show()
+    {
+        for (int i = 0; i < QueueLength; i++)
+        {
+            cout << Wait[i] << " - " << Pri[i] << "\t";
+        }
+        cout << endl;
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
+    srand(time(NULL));
 
-    Stack stack;
-    //stack.Push('A');
-    //stack.Push('B');
-    //stack.Push('C');
+    // Работа со стеком
+    /*Stack stack;
+    stack.Push('A');
+    stack.Push('B');
+    stack.Push('C');
 
-    /*cout << "в стеке " << stack.GetCount() << " элементов" << endl;
+    cout << "в стеке " << stack.GetCount() << " элементов" << endl;
     cout << "Pull 1 раз: " << stack.Pull() << endl;
 
     cout << "в стеке " << stack.GetCount() << " элементов" << endl;
@@ -121,6 +410,8 @@ int main()
     cout << "в стеке " << stack.GetCount() << " элементов" << endl;
     cout << "pop 5 раз: " << stack.Pop() << endl;*/
 
+    // Проверка скобок
+    /*
     string input;
     cout << "Введите строку: " << endl;
     cin >> input;
@@ -192,5 +483,47 @@ int main()
     {
         cout << "Строка верна!" << endl;
     }
+    */
+
+    // Работа с очередью
+    /*  Queue queuei(20);
+
+    for (int i = 0; i < 20; i++)
+    {
+        queuei.Add(rand());
+    }
+    queuei.Show();
+    queuei.Extract();
+    queuei.Show();*/
+
+    // Работа с кольцевой очередью
+    /*QueueRing qr(20);
+    for (int i = 0; i < 20; i++)
+    {
+        qr.Add(rand()%20);
+    }
+    qr.Show();
+    qr.Extract();
+    qr.Show();
+    qr.Extract();
+    qr.Show();
+    qr.Extract();
+    qr.Show();
+    */
+
+    // Работа с приоритетной очередью
+    QueuePriority qp(25);
+    for (int i = 0; i < 5; i++)
+    {
+        qp.Add(rand() % 100, rand() % 6);
+    }
+    qp.Show();
+    qp.Extract();
+    qp.Show();
+    qp.Extract();
+    qp.Show();
+    qp.Extract();
+    qp.Show();
+
     return 0;
 }
