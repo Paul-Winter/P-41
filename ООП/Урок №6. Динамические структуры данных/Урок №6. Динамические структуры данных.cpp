@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <time.h>
+#include <forward_list>
 
 using namespace std;
 
@@ -360,6 +361,54 @@ public:
     }
 };
 
+struct Node
+{
+    int value;
+    Node* next;
+    Node(int val) :value{ val }, next{nullptr} {}
+};
+struct LinkedList
+{
+    Node* head;
+    Node* tail;
+public:
+    LinkedList() :head{ nullptr }, tail{ nullptr } {}
+    bool IsEmpty()
+    {
+        if (head == nullptr)
+        {
+            return true;
+        }
+        return false;
+    }
+    void Print()
+    {
+        if (IsEmpty())
+        {
+            return;
+        }
+        Node* temp = head;
+        while (temp)
+        {
+            cout << temp->value << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+    void Push(int value)
+    {
+        Node* temp = new Node(value);
+        if (IsEmpty())
+        {
+            head = temp;
+            tail = temp;
+            return;
+        }
+        tail->next = temp;
+        tail = temp;
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -512,7 +561,7 @@ int main()
     */
 
     // Работа с приоритетной очередью
-    QueuePriority qp(25);
+    /*QueuePriority qp(25);
     for (int i = 0; i < 5; i++)
     {
         qp.Add(rand() % 100, rand() % 6);
@@ -524,6 +573,31 @@ int main()
     qp.Show();
     qp.Extract();
     qp.Show();
+    */
+
+    // Работа со связным списком из стандартной библиотеки
+   /* forward_list<int> numbers{ 1,2,3,4,5 };
+    cout << numbers.front() << endl;
+    for (int n : numbers)
+    {
+        cout << n << "\t";
+    }
+    auto current = numbers.begin();
+    auto end = numbers.end();
+    cout << "\ncurrent = " << &current << "\nend = " << &end << endl;*/
+
+    // Работа со связным списком
+    LinkedList l;
+    cout << l.IsEmpty() << endl;
+
+    l.Push(3);
+    l.Push(123);
+    l.Print();
+
+    l.Push(69);
+    l.Push(42);
+    l.Push(37);
+    l.Print();
 
     return 0;
 }
