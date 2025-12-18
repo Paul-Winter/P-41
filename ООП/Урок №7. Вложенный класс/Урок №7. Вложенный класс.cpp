@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// inner class
 class Human
 {
 public:
@@ -108,6 +109,58 @@ public:
     }
 };
 
+// composition
+class Picture
+{
+    Figure* figures;
+    string name;
+    int figurescount;
+public:
+    Picture()
+    {
+        figures = NULL;
+        name = "";
+        figurescount = 0;
+    }
+    ~Picture()
+    {
+        if (figures != NULL)
+        {
+            delete[] figures;
+        }
+    }
+    void PaintPicture()
+    {
+        int temp{ 0 }, temp2{ 0 };
+        cout << "Введите имя картины: ";
+        cin >> name;
+        cout << "Сколько хотите фигур на картине? ";
+        cin >> temp;
+        if (temp < 2)
+        {
+            exit(0);
+        }
+        figurescount = temp;
+        figures = new Figure[temp];
+        for (int i = 0; i < figurescount; i++)
+        {
+            cout << "Введите цвет " << i+1 << " фигуры: ";
+            cin >> temp;
+            cout << "Введите количество точек " << i+1 << " фигуры: ";
+            cin >> temp2;
+            figures[i].CreateFigure(temp2, temp);
+        }
+    }
+    void ShowPicture()
+    {
+        cout << "Имя картины: " << name<<endl;
+        for (int i = 0; i < figurescount; i++)
+        {
+            figures[i].ShowFigure();
+        }
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -123,9 +176,16 @@ int main()
     */
 
     // agregate
+    /*
     Figure f;
     f.CreateFigure(3, 255);
     f.ShowFigure();
+    */
+
+    // composition
+    Picture great_picture;
+    great_picture.PaintPicture();
+    great_picture.ShowPicture();
     
     return 0;
 }
