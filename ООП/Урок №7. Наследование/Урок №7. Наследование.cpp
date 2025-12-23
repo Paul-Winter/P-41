@@ -107,6 +107,130 @@ public:
     }
 };
 
+class Roga
+{
+protected:
+    int weight;
+    string color;
+public:
+    Roga()
+    {
+        weight = 0;
+        color = "Brown";
+    }
+};
+class Kopyta
+{
+protected:
+    int size;
+    string form;
+public:
+    Kopyta()
+    {
+        size = 0;
+        form = "big";
+    }
+};
+class Los : public Roga, public Kopyta
+{
+public:
+    string name;
+    Los()
+    {
+        name = "Los Bezimanniy";
+    }
+    void show()
+    {
+        cout << "Name Losa: " << name<<endl;
+        cout << "Size Kopyt: " << size << endl;
+        cout << "Form Kopyt: " << form << endl;
+        cout << "Color Rogov: " << color << endl;
+        cout << "Weight Rogov: " << weight << endl;
+    }
+};
+
+class Father
+{
+protected:
+    string hair;
+public:
+    Father()
+    {
+        hair = "Black";
+    }
+    string getHair()
+    {
+        return hair;
+    }
+};
+
+class Mother
+{
+protected:
+    string eyescolor;
+public:
+    Mother()
+    {
+        eyescolor = "Green";
+    }
+    string getEyescolor()
+    {
+        return eyescolor;
+    }
+};
+
+class GrandMother
+{
+protected:
+    int weight;
+public:
+    GrandMother()
+    {
+        weight = 1;
+    }
+    int getWeight()
+    {
+        return weight;
+    }
+};
+
+class GrandFather
+{
+protected:
+    int height;
+public:
+    GrandFather()
+    {
+        height = 0;
+    }
+    int getHeight()
+    {
+        return height;
+    }
+};
+
+class Baby : public GrandFather, public GrandMother, public Father, public Mother
+{
+    string name;
+public:
+    Baby()
+    {
+        name = "Ванечка Безымянный";
+    }
+    string getname()
+    {
+        return name;
+    }
+    void Show()
+    {
+        cout << "Name " << name << endl;
+        cout << "Eyes color " << eyescolor << endl;
+        cout << "Hair color " << hair << endl;
+        cout << "Height " << height << endl;
+        cout << "Weight " << weight << endl;
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -126,11 +250,19 @@ int main()
     //ChildProtected cpr;
     //ChildPrivate cpi;
 
-    Window win(10, 10);
+    /*Window win(10, 10);
     win.Show();
     win.moveX(2);
     win.moveY(7);
     win.Show();
+
+    Los Ivan;
+
+    Ivan.show();*/
+
+    Baby Vanechka;
+
+    Vanechka.Show();
 
     return 0;
 }
