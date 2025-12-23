@@ -5,50 +5,105 @@ using namespace std;
 
 class Parent
 {
+    int countDefault;
 protected:
-    string name;
-    int age;
-    //int fingersCount;
+    int countProtected;
+public:
+    int countPublic;
+private:
+    int countPrivate;
+
 public:
     Parent()
     {
-        cout << "Вызов конструктора родителя" << endl;
-        name = "";
-        age = 0;
-    }
-    Parent(string _name, int _age) : name {_name}, age {_age}
-    {
-        //fingersCount = 0;
-    }
-    void SetName(string _name)
-    {
-        name = _name;
-    }
-    void SetAge(int _age)
-    {
-        age = _age;
-    }
-    //void SetFingers(int count)
-    //{
-    //    fingersCount = count;
-    //}
-    void Show()
-    {
-        cout << "Human " << name << " " << age << " years old" << endl;
-        //cout << "Fingers count " << fingersCount << endl;
+        cout << "Вызов конструктора Parent" << endl;
     }
 };
 
-class Child : public Parent
+class ChildPublic : public Parent
 {
-    int fingersCount;
 public:
-    Child(string _name, int _age, int _count)
+    ChildPublic()
     {
-        cout << "Вызов конструктора наследника" << endl;
-        this->name = _name;
-        this->age = _age;
-        this->fingersCount = _count;
+        cout << "Вызов конструктора ChildPublic" << endl;
+    }
+};
+
+class ChildProtected : protected Parent
+{
+public:
+    ChildProtected()
+    {
+        cout << "Вызов конструктора ChildProtected" << endl;
+    }
+};
+
+class ChildPrivate : private Parent
+{
+public:
+    ChildPrivate()
+    {
+        cout << "Вызов конструктора ChildPrivate" << endl;
+    }
+};
+
+class ChildDefault : Parent
+{
+public:
+    ChildDefault()
+    {
+        cout << "Вызов конструктора ChildDefault" << endl;
+    }
+};
+class Point
+{
+protected:
+    int x;
+    int y;
+public:
+    Point(int _x, int _y) :x{ _x }, y{_y}{}
+    Point()
+    {
+        x = 0;
+        y = 0;
+    }
+    int& getX()
+    {
+        return x;
+    }
+    int& getY()
+    {
+        return y;
+    }
+};
+class Window : public Point
+{
+    int height;
+    int width;
+public:
+    Window(int _height, int _width) : height{ _height }, width{ _width }{}
+    int& getHeight()
+    {
+        return height;
+    }
+    int& getWidth()
+    {
+        return width;
+    }
+    void moveX(int Dx)
+    {
+        x += Dx;
+    }
+    void moveY(int Dy)
+    {
+        y += Dy;
+    }
+    void Show()
+    {
+        cout << "По Х " << x<<endl;
+        cout << "По Y " << y << endl;
+        cout << "По Height " << height << endl;
+        cout << "По Width " << width << endl;
     }
 };
 
@@ -62,8 +117,20 @@ int main()
     ////human.SetFingers(10);
     //human.Show();
 
-    Child baby("Vanechka", 1, 10);
-    baby.Show();
+    //ChildPublic baby("Vanechka", 1, 10);
+    //baby.Show();
+
+    //ChildDefault cd;
+    //ChildPublic cp;
+    //cp.countPublic = 12;
+    //ChildProtected cpr;
+    //ChildPrivate cpi;
+
+    Window win(10, 10);
+    win.Show();
+    win.moveX(2);
+    win.moveY(7);
+    win.Show();
 
     return 0;
 }
