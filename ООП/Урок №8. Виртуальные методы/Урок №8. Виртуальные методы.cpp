@@ -125,7 +125,6 @@ int main()
 
     Baby b;
     b.show();
-    b.
 
     return 0;
 }
