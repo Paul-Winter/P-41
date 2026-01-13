@@ -41,7 +41,6 @@ public:
         Color_Eyes = value;
     }
 };
-
 class Child : public Parent
 {
 protected:
@@ -82,7 +81,6 @@ public:
         Color_Hair = value;
     }
 };
-
 class Baby : public Child //, public Parent
 {
 protected:
@@ -103,10 +101,59 @@ public:
     }
 };
 
+class Matreshka
+{
+protected:
+    int size;
+
+public:
+    Matreshka(int Psize) :size{ Psize } {}
+    Matreshka() :Matreshka(20) {}
+    virtual int GetSize()
+    {
+        return size;
+    }
+    virtual void SetSize(int value)
+    {
+        size = value;
+    }
+    virtual void Show()
+    {
+        cout << "Матрешка " << size << " см" << endl;
+    }
+};
+
+class MiniMatreshka:public Matreshka
+{
+private:
+    string color;
+
+public:
+    MiniMatreshka(string Pcolor, int Psize) :color{ Pcolor }
+    {
+        size = Psize;
+    }
+    MiniMatreshka() :MiniMatreshka("orange", 15) {}
+
+    virtual string GetColor()
+    {
+        return color;
+    }
+    virtual void SetColor(string value)
+    {
+        color = value;
+    }
+    virtual void Show()
+    {
+        cout << "Мини матрешка " << size << " см" << ", цвет: " << color << endl;
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
 
+    /*
     Parent family;
     family.show();
     cout << endl << "-------------------------------------------------------------------" << endl;
@@ -125,6 +172,12 @@ int main()
 
     Baby b;
     b.show();
+    */
+
+    Matreshka m1;
+    MiniMatreshka m2;
+    m1.Show();
+    m2.Show();
 
     return 0;
 }
