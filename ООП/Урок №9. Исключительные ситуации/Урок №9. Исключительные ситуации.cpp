@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <string>
+#include <stdexcept>
 
 using namespace std;
 
@@ -13,6 +15,7 @@ int main()
 
     while (true)
     {
+        /*
         try
         {
             double a;
@@ -33,6 +36,51 @@ int main()
         catch (double ex)
         {
             cout << "\nОшибка - попытка деления на " << ex << endl;
+        }
+        */
+
+        try
+        {
+            int* ptr = 0;
+            int size;
+
+            cout << "\nВведите размер массива (от 1 до 10): ";
+            cin >> size;
+
+            if (size < 1 || size > 10)
+            {
+                throw "\nОШИБКА - указан неверный размер!";
+            }
+
+            ptr = new int[size];
+
+            if (!ptr)
+            {
+                throw "\nОШИБКА - невозможно выделить память!";
+            }
+
+            string a;
+            cout << "\nВведите значение а (не равно 0): ";
+            cin >> a;
+            int number = stoi(a);
+            
+            if (number == 0)
+            {
+                throw number;
+            }
+        }
+        catch(int ex)
+        {
+            cout << "\nОШИБКА: переменная а = " << ex << endl;
+        }
+        catch(const char* ex)
+        {
+            cout << ex << endl;
+        }
+        // универсальный catch
+        catch(...)
+        {
+            cout << "\nОШИБКА: неизвестная ошибка!" << endl;
         }
     }
 
