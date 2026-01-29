@@ -4,16 +4,8 @@
 
 using namespace std;
 
-int main()
+void readFileCppStyle()
 {
-    setlocale(LC_ALL, "");
-
-    //std::cout << "Привет, Мир!" << std::endl;
-    //int a;
-    //std::cin >> a;
-    //std::cerr
-    //std::clog
-
     const int MAX_LEN_PATH = 250;
     const int MAX_COLS = 15;
     const int MAX_ROWS = 20;
@@ -34,7 +26,7 @@ int main()
     if (!input)
     {
         cout << "Невозможно открыть файл!" << endl;
-        return 1;
+        return;
     }
 
     cout.setf(ios::uppercase);
@@ -57,7 +49,7 @@ int main()
             cout << text[i];
         }
 
-        for (;j < MAX_COLS; j++)
+        for (; j < MAX_COLS; j++)
         {
             cout << "        ";
         }
@@ -73,6 +65,19 @@ int main()
         // закрываем файл
         input.close();
     }
+}
+
+int main()
+{
+    setlocale(LC_ALL, "");
+
+    //std::cout << "Привет, Мир!" << std::endl;
+    //int a;
+    //std::cin >> a;
+    //std::cerr
+    //std::clog
+
+    //readFileCppStyle();
 
     return 0;
 }
