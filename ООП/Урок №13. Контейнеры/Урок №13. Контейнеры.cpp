@@ -162,18 +162,16 @@ int main()
     cin >> value2;
     cout << "Введите ключ: ";
     cin >> key2;
-    if (key2 == key)
+
+    pair<map<int, int>::iterator, bool> error = my_map.insert(make_pair(key2, value2));
+    if (!error.second)
     {
-        cout << "Указанный ключ уже существует" << endl;
+        cout << "Ошибка!!! Ключ уже существует!" << endl;
     }
-    else
-    {
-        pair<int, int> second(key2, value2);
-        my_map.insert(second);
-    }
+
     cout << "Количество элементов в словаре: " << my_map.size() << endl;
     cout << "____________________________________________________________" << endl;
-
+    //map<string, map<string, bool>>
 
 #pragma endregion
 
