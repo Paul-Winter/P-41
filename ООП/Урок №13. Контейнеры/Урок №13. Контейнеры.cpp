@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 #include <list>
+#include <map>
 
 using namespace std;
 
@@ -128,6 +129,51 @@ int main()
     list1.unique();
     cout << "____________________________________________________________" << endl;
     ShowLists(list1, list2);
+
+#pragma endregion
+
+#pragma region map
+
+    cout << endl << endl;
+    cout << "==============================map==============================" << endl;
+
+    map<int, int> my_map;
+    vector<int> my_vect;
+
+    cout << "\nМаксимальный размер vector:\t" << my_vect.max_size() / sizeof(int) << endl;
+    cout << "Максимальный размер map:\t" << my_map.max_size() / sizeof(int) << endl;
+    cout << "____________________________________________________________" << endl;
+
+    int key, key2;
+    int value, value2;
+
+    cout << "\nВведите значение: ";
+    cin >> value;
+    cout << "Введите ключ: ";
+    cin >> key;
+
+    pair<int, int> elem(key, value);
+    my_map.insert(elem);
+    cout << "Количество элементов в словаре: " << my_map.size() << endl;
+    cout << "____________________________________________________________" << endl;
+
+    //pair<int, int> second(1, 123456);
+    cout << "\nВведите значение: ";
+    cin >> value2;
+    cout << "Введите ключ: ";
+    cin >> key2;
+    if (key2 == key)
+    {
+        cout << "Указанный ключ уже существует" << endl;
+    }
+    else
+    {
+        pair<int, int> second(key2, value2);
+        my_map.insert(second);
+    }
+    cout << "Количество элементов в словаре: " << my_map.size() << endl;
+    cout << "____________________________________________________________" << endl;
+
 
 #pragma endregion
 
