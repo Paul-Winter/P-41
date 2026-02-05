@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <string>
 #include <vector>
 #include <list>
 #include <map>
@@ -22,6 +23,21 @@ void ShowLists(list<int>& l1, list<int>& l2)
         cout << *iter << " ";
     }
     cout << "\n____________________________________________________________" << endl;
+}
+
+void Show(map<string, int> con)
+{
+    for (map<string, int>::const_iterator i = con.begin(); i != con.end(); ++i)
+    {
+        cout << i->first << '\t' << i->second << endl;
+    }
+}
+void Show(multimap<string, int> con)
+{
+    for (multimap<string, int>::const_iterator i = con.begin(); i != con.end(); ++i)
+    {
+        cout << i->first << '\t' << i->second << endl;
+    }
 }
 
 int main()
@@ -172,6 +188,85 @@ int main()
     cout << "Количество элементов в словаре: " << my_map.size() << endl;
     cout << "____________________________________________________________" << endl;
     //map<string, map<string, bool>>
+
+#pragma endregion
+
+#pragma region multimap
+
+    cout << endl << endl;
+    cout << "==============================multimap==============================" << endl;
+    
+    map<string, int> cont1;
+    multimap<string, int> cont2;
+
+    cont1.insert(pair<string, int>("Иванов", 10));
+    cont1.insert(pair<string, int>("Петров", 20));
+    cont1["Сидоров"] = 30;
+
+    cout << "Содержимое отображения:" << endl;
+    Show(cont1);
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Изменяем значение по ключу (Иванову - 50)..." << endl;
+    cont1["Иванов"] = 50;
+    Show(cont1);
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Добавляем значение по существующему ключу (Иванову - 100)..." << endl;
+    cont1.insert(pair<string, int>("Иванов", 100));
+    Show(cont1);
+    cout << "____________________________________________________________" << endl;
+
+    cont2.insert(pair<string, int>("Иванов", 10));
+    cont2.insert(pair<string, int>("Петров", 20));
+    cont2.insert(pair<string, int>("Сидоров", 30));
+
+    cout << "Содержимое мультиотображения:" << endl;
+    Show(cont2);
+    cout << "____________________________________________________________" << endl;
+    
+    //cont2["Иванов"] = 20;
+
+    cout << "Ищем первое вхождение элемента с ключом \"Петров\"..." << endl;
+    multimap<string, int>::iterator iter = cont2.find("Петров");
+    cout << iter->first << '\t' << iter->second << endl;
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Добавляем значение по существующему ключу (Иванову - 100)..." << endl;
+    cont2.insert(pair<string, int>("Иванов", 100));
+    Show(cont2);
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Добавляем новое значение..." << endl;
+    cont2.insert(pair<string, int>("Макаров", 40));
+    Show(cont2);
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Добавляем значение по существующему ключу (Иванову - 80)..." << endl;
+    cont2.insert(pair<string, int>("Иванов", 80));
+    Show(cont2);
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Добавляем значение по существующему ключу (Иванову - 30)..." << endl;
+    cont2.insert(pair<string, int>("Иванов", 30));
+    Show(cont2);
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Добавляем значение по существующему ключу (Иванову - 50)..." << endl;
+    cont2.insert(pair<string, int>("Иванов", 50));
+    Show(cont2);
+    cout << "____________________________________________________________" << endl;
+
+    cout << "Количество значений по ключу \"Иванов\": " << cont2.count("Иванов") << endl;
+    cout << "____________________________________________________________" << endl;
+
+    iter = cont2.lower_bound("Иванов");
+
+    for (; iter != cont2.upper_bound("Иванов"); iter++)
+    {
+        cout << iter->first << '\t' << iter->second << endl;
+    }
+    cout << "____________________________________________________________" << endl;
 
 #pragma endregion
 
