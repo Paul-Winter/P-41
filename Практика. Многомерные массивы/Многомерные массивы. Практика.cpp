@@ -3,12 +3,53 @@
 
 using namespace std;
 
+class pract
+{
+public:
+    int rows;
+    int cols;
+    int** mass = new int* [rows];
+    pract()
+    {
+        rows = 10;
+        //cols = 10;
+        //mass= new int* [rows];
+        srand(time(NULL));
+        for (int i = 0; i < rows; i++)
+        {
+            cols = 10;
+        }
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                mass[i][j] = rand() %10;
+                cout << mass[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+    void fullandshow()
+    {
+        srand(time(NULL));
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                mass[i][j] = 0;
+                cout << mass[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
 int main()
 {
     setlocale(LC_ALL, "");
     srand(time(NULL));
 
-    int rowsA, colsA;
+    /*int rowsA, colsA;
     cout << "Введите кол-во строк массива А: ";
     cin >> rowsA;
 
@@ -71,7 +112,9 @@ int main()
         }
         cout << endl;
     }
-    cout << endl;
-
+    cout << endl;*/
+    cout << "______________________________________";
+    pract practice;
+    //practice.fullandshow();
     return 0;
 }
