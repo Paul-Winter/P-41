@@ -1,0 +1,118 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Страница — 1" id="EnDfGdUUpMwcN3G9SfES">
+    <mxGraphModel dx="815" dy="485" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-1" value="Рассмотреть следующие возможные случаи:&lt;br/&gt;1. Запись на диск и верификация завершены успешно;&lt;br/&gt;2. Запись на диск не выполнена по причине недостаточного&lt;br/&gt;свободного места на диске;&lt;br/&gt;3. Запись на диск не выполнена по причине недостаточного&lt;br/&gt;свободного места на диске, но после выполнения финализации&lt;br/&gt;запись успешно выполнена;&lt;br/&gt;4. Запись на диск не выполнена по причине повреждения диска;&lt;br/&gt;5. Запись на диск выполнена, но верификация показала наличие ошибок;&lt;br/&gt;Как вы поступите с диаграммой последовательностей, чтобы&lt;br/&gt;отобразить все перечисленные случаи? " style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry y="100" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-2" value="пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="370" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-5" value="записать DVD" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="370" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-7" value="вставить&amp;nbsp;DVD" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="265" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-8" value="извлечь DVD" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="370" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-9" value="проверить запись" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="510" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-11" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="410" as="sourcePoint" />
+            <mxPoint x="420" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-12" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="324.71" y="360" as="sourcePoint" />
+            <mxPoint x="324.71" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-13" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="409.71" as="sourcePoint" />
+            <mxPoint x="220" y="409.71" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-14" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="329.71" y="460" as="sourcePoint" />
+            <mxPoint x="329.71" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-15" value="клиент банка" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="790" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-18" value="вставить/приложить карту" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="255" y="650" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-19" value="извлечь карту" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="710" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-20" value="ввести пароль" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-21" value="выбрать операцию&lt;div&gt;&quot;получение денег&quot;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="830" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-22" value="ввести сумму для получения" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="930" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-23" value="выбрать номинал купюр" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="354" y="920" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-24" value="забрать деньги" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="414" y="820" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-25" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="800" as="sourcePoint" />
+            <mxPoint x="390" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-26" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="840" as="sourcePoint" />
+            <mxPoint x="400" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-27" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="878.28" as="sourcePoint" />
+            <mxPoint x="360" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-28" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="880" as="sourcePoint" />
+            <mxPoint x="280" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-29" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="840" as="sourcePoint" />
+            <mxPoint x="240" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-30" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="314" y="785" as="sourcePoint" />
+            <mxPoint x="310" y="735" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vl0Nj60OU2rZGuXy_WUq-31" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="800" as="sourcePoint" />
+            <mxPoint x="240" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
