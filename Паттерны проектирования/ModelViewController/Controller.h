@@ -4,12 +4,12 @@
 
 using namespace std;
 
-class Controller
+class ControllerTemperature
 {
 private:
-	Model* model;
+	ModelTemperature* model;
 public:
-	Controller(Model* model)
+	ControllerTemperature(ModelTemperature* model)
 	{
 		this->model = model;
 	}

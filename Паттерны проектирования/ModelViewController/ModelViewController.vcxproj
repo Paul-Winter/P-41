@@ -124,14 +124,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="ControllerNim.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelNim.cpp" />
     <ClCompile Include="ModelViewController.cpp" />
     <ClCompile Include="View.cpp" />
+    <ClCompile Include="ViewNim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="ControllerNim.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelNim.h" />
     <ClInclude Include="View.h" />
+    <ClInclude Include="ViewNim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

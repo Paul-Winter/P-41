@@ -4,12 +4,12 @@
 
 using namespace std;
 
-class View : public Observer
+class ViewTemperature : public Observer
 {
 private:
-	Model* model;
+	ModelTemperature* model;
 public:
-	View(Model* model)
+	ViewTemperature(ModelTemperature* model)
 	{
 		this->model = model;
 		this->model->AddObserver(this);

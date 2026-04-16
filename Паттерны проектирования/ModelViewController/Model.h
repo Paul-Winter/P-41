@@ -28,7 +28,7 @@ public:
 	}
 };
 
-class Model : public Observervable
+class ModelTemperature : public Observervable
 {
 private:
 	double temperatureF;	
