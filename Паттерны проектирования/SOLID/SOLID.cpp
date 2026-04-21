@@ -154,7 +154,312 @@ public:
 
 #pragma region Liskov Substitution Principle
 
+class Figure
+{
 
+};
+
+class Rectangle : public Figure
+{
+protected:
+    int width;
+    int height;
+public:
+    virtual int GetWidth()
+    {
+        return width;
+    }
+    virtual int GetHeight()
+    {
+        return height;
+    }
+    virtual void SetWidth(int width)
+    {
+        this->width = width;
+    }
+    virtual void SetHeight(int height)
+    {
+        this->height = height;
+    }
+    virtual int GetArea()
+    {
+        return width * height;
+    }
+};
+//class Square : public Rectangle
+class Square : public Figure
+{
+public:
+    //int GetWidth() override
+    //{
+    //    return width;
+    //}
+    //int GetHeight() override
+    //{
+    //    return height;
+    //}
+    //void SetWidth(int width) override
+    //{
+    //    this->width = width;
+    //    this->height = width;
+    //}
+    //void SetHeight(int height) override
+    //{
+    //    this->height = height;
+    //    this->width = height;
+    //}
+    Square()
+    {
+
+    }
+};
+
+#pragma endregion
+
+#pragma region Interface Segregation Principle
+
+class Message
+{
+protected:
+    string text;
+    string subject;
+    string toAddress;
+    string fromAddress;
+public:
+    virtual string GetText() = 0;
+    virtual string GetSubject() = 0;
+    virtual string GetToAddress() = 0;
+    virtual string GetFromAddress() = 0;
+    virtual void SetText(string text) = 0;
+    virtual void SetSubject(string subject) = 0;
+    virtual void SetToAddress(string toAddress) = 0;
+    virtual void SetFromAddress(string fromAddress) = 0;
+    virtual void Send() = 0;
+};
+class EmailMessage : public Message
+{
+public:
+    string GetText() override
+    {
+        return text;
+    }
+    string GetSubject() override
+    {
+        return subject;
+    }
+    string GetToAddress() override
+    {
+        return toAddress;
+    }
+    string GetFromAddress() override
+    {
+        return fromAddress;
+    }
+    void SetText(string text) override
+    {
+        this->text = text;
+    }
+    void SetSubject(string subject) override
+    {
+        this->subject = subject;
+    }
+    void SetToAddress(string toAddress) override
+    {
+        this->toAddress = toAddress;
+    }
+    void SetFromAddress(string fromAddress) override
+    {
+        this->fromAddress = fromAddress;
+    }
+    void Send() override
+    {
+        cout << "отправка текста электронной почтой" << endl;
+    }
+};
+class SMSMessage : public Message
+{
+public:
+    string GetText() override
+    {
+        return text;
+    }
+    string GetSubject() override
+    {
+        throw new exception;
+    }
+    string GetToAddress() override
+    {
+        return toAddress;
+    }
+    string GetFromAddress() override
+    {
+        return fromAddress;
+    }
+    void SetText(string text) override
+    {
+        this->text = text;
+    }
+    void SetSubject(string subject) override
+    {
+        throw new exception;
+    }
+    void SetToAddress(string toAddress) override
+    {
+        this->toAddress = toAddress;
+    }
+    void SetFromAddress(string fromAddress) override
+    {
+        this->fromAddress = fromAddress;
+    }
+    void Send() override
+    {
+        cout << "отправка текста службой коротких сообщений" << endl;
+    }
+};
+class VoiceMessage : public Message
+{
+public:
+    int* Voice;
+    string GetText() override
+    {
+        throw new exception;
+    }
+    string GetSubject() override
+    {
+        throw new exception;
+    }
+    string GetToAddress() override
+    {
+        return toAddress;
+    }
+    string GetFromAddress() override
+    {
+        return fromAddress;
+    }
+    void SetText(string text) override
+    {
+        throw new exception;
+    }
+    void SetSubject(string subject) override
+    {
+        throw new exception;
+    }
+    void SetToAddress(string toAddress) override
+    {
+        this->toAddress = toAddress;
+    }
+    void SetFromAddress(string fromAddress) override
+    {
+        this->fromAddress = fromAddress;
+    }
+    void Send() override
+    {
+        cout << "отправка голосового сообщения" << endl;
+    }
+};
+
+class IMessage
+{
+protected:
+    string toAddress;
+    string fromAddress;
+public:
+    virtual string GetToAddress() = 0;
+    virtual string GetFromAddress() = 0;
+    virtual void SetToAddress(string toAddress) = 0;
+    virtual void SetFromAddress(string fromAddress) = 0;
+    virtual void Send() = 0;
+};
+class ITextMessage : public IMessage
+{
+protected:
+    string text;
+public:
+    string GetText()
+    {
+        return text;
+    }
+    void SetText(string text)
+    {
+        this->text = text;
+    }
+};
+class ISubjectMessage : public IMessage
+{
+protected:
+    string subject;
+public:
+    string GetSubject()
+    {
+        return subject;
+    }
+    void SetSubject(string text)
+    {
+        this->subject = text;
+    }
+};
+class IVoiceMessage : public IMessage
+{
+protected:
+    int* voice;
+public:
+    int* GetVoice()
+    {
+        return voice;
+    }
+    void SetVoice(int* record)
+    {
+        this->voice = record;
+    }
+};
+
+#pragma endregion
+
+#pragma region Dependency Inversion Principle
+
+//class ConsolePrinter
+class ConsolePrinter : public IPrinter
+{
+public:
+    // void Print(string text)
+    void Print(string text) override
+    {
+        cout << text << endl;
+    }
+};
+
+class IPrinter
+{
+protected:
+    virtual void Print(string text) = 0;
+};
+
+class Book
+{
+private:
+    string text;
+    //ConsolePrinter* printer;
+    IPrinter* printer;
+public:
+    string GetText()
+    {
+        return text;
+    }
+    //ConsolePrinter* GetPrinter()
+    IPrinter* GetPrinter()
+    {
+        return printer;
+    }
+    void SetText(string text)
+    {
+        this->text = text;
+    }
+    //void SetPrinter(ConsolePrinter* printer)
+    void SetPrinter(IPrinter* printer)
+    {
+        this->printer = printer;
+    }
+};
 
 #pragma endregion
 
@@ -163,17 +468,25 @@ int main()
 {
     setlocale(LC_ALL, "");
 
-    Cook chief("Arnold");
-    cout << "зовём повара по имени " << chief.GetName() << endl;
-    Meal* rostbeef = new CookMeat();
-    Meal* vitamine = new CookSalad();
-    Meal* oatmeal = new CookPorrige();
-    cout << "заказываем кашу на завтрак" << endl;
-    chief.Make(oatmeal);
-    cout << "заказываем мясо на обед" << endl;
-    chief.Make(rostbeef);
-    cout << "заказываем салат на ужин" << endl;
-    chief.Make(vitamine);
+    //Cook chief("Arnold");
+    //cout << "зовём повара по имени " << chief.GetName() << endl;
+    //Meal* rostbeef = new CookMeat();
+    //Meal* vitamine = new CookSalad();
+    //Meal* oatmeal = new CookPorrige();
+    //cout << "заказываем кашу на завтрак" << endl;
+    //chief.Make(oatmeal);
+    //cout << "заказываем мясо на обед" << endl;
+    //chief.Make(rostbeef);
+    //cout << "заказываем салат на ужин" << endl;
+    //chief.Make(vitamine);
+
+    //Rectangle* rect = new Square();
+    //rect->SetHeight(5);
+    //rect->SetWidth(10);
+    //if (rect->GetArea() != 50)
+    //{
+    //    throw new exception;
+    //}
 
     return 0;
 }
