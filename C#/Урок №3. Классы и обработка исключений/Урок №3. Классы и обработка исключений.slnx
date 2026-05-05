@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../ClassLibrary/ClassLibrary.csproj" />
+  <Project Path="Урок №3. Классы и обработка исключений.csproj" />
+</Solution>
