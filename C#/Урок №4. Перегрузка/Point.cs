@@ -9,6 +9,22 @@ namespace Урок__4._Перегрузка
         private int x;
         private int y;
 
+        public int GetX()
+        {
+            return x;
+        }
+        public int GetY()
+        {
+            return y;
+        }
+        public void SetX(int x)
+        {
+            this.x = x;
+        }
+        public void SetY(int y)
+        {
+            this.y = y;
+        }
         public Point(int x, int y)
         {
             this.x = x;
@@ -16,10 +32,10 @@ namespace Урок__4._Перегрузка
         }
         public Point(int a): this(a, a) {}
         public Point(): this(0, 0) {}
-        public void Show()
-        {
-            Console.WriteLine($"x = {x}; y = {y};");
-        }
+        //public void Show()
+        //{
+        //    Console.WriteLine($"x = {x}; y = {y};");
+        //}
         //public static тип_возвращаемого_значения operator символ_операции(параметры) {}
         public static Point operator -(Point a)
         {
@@ -51,7 +67,7 @@ namespace Урок__4._Перегрузка
         }
         public override string ToString()
         {
-            return $"Point ({x};{y})";
+            return $"x = {x}; y = {y};";
         }
     }
 }

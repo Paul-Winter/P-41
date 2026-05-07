@@ -1,4 +1,6 @@
-﻿namespace Урок__4._Перегрузка
+﻿using System.Net.Http.Headers;
+
+namespace Урок__4._Перегрузка
 {
     public class Program
     {
@@ -8,17 +10,17 @@
             Point p2 = new Point(2);
             Point p3 = new Point();
 
-            p1.Show();
-            p2.Show();
-            p3.Show();
+            Console.WriteLine(p1);
+            Console.WriteLine(p2);
+            Console.WriteLine(p3);
 
             Point pResult = -p2;
-            pResult.Show();
+            Console.WriteLine(pResult);
 
             pResult = p1 + p1;
-            pResult.Show();
+            Console.WriteLine(pResult);
             pResult = p2 - p1;
-            pResult.Show();
+            Console.WriteLine(pResult);
             if (p1)
             {
                 Console.WriteLine($"p1 is true");
@@ -38,7 +40,19 @@
                 Console.WriteLine($"p3 is false");
                 Console.WriteLine(p3);
             }
+            Console.WriteLine($"p1.x = {p1.GetX()}; p1.y = {p1.GetY()}");
+            Console.WriteLine("Set p1.x = 42;\nSet p1.y = 12;");
+            p1.SetX(42);
+            p1.SetY(12);
+            Console.WriteLine($"p1.x = {p1.GetX()}; p1.y = {p1.GetY()}");
 
+            Point3D point1 = new Point3D(1, 2, 3);
+            Console.WriteLine(point1);
+            Console.WriteLine("Set point1.x = -1;\nSet point1.y = 22;\nSet point1.z = 33");
+            point1.X = -1;
+            point1.Y = 22;
+            point1.Z = 33;
+            Console.WriteLine(point1);
         }
     }
 }
