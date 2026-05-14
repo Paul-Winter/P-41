@@ -1,4 +1,6 @@
-﻿namespace Урок__7._Интерфейсы
+﻿using System.Net.Http.Headers;
+
+namespace Урок__7._Интерфейсы
 {
     internal class Program
     {
@@ -35,7 +37,28 @@
                 Console.WriteLine("___Обеденный_перерыв___");
                 Console.WriteLine($"Кушаем до: {worker.TimeToDinner(200)} минут");
             }
-            
+            Console.WriteLine("____________________Студенты_в_аудитории:________________________________________");
+            Auditory gray102 = new Auditory();
+            foreach (Student student in gray102)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine("____________________Сортируем_студентов_по_фамилии:________________________________________");
+            gray102.Sort();
+            foreach (Student student in gray102)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine("____________________Копируем_студентов:________________________________________");
+            Student st1 = new Student { Name = "John", Surname = "Doe", StudentCard = new StudentCard { Id = 123, Series = "AA" } };
+            Console.WriteLine("копирование:");
+            Console.WriteLine(st1);
+            Student st2 = (Student)st1.Clone();
+            Console.WriteLine(st2);
+            st2.StudentCard.Id = 222;
+            Console.WriteLine("изменение:");
+            Console.WriteLine(st1);
+            Console.WriteLine(st2);
         }
     }
 }
