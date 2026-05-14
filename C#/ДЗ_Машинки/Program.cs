@@ -13,6 +13,14 @@
             {
                 Console.WriteLine(vehicle);
             }
+            IDrive[] drives = new IDrive[] {
+                new Car(),
+                new Tractor(),
+                new Motocycle() };
+            foreach (IDrive drive in drives)
+            {
+                drive.Drive();
+            }
         }
     }
 }
