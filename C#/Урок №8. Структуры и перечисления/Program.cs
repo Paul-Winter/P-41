@@ -1,7 +1,43 @@
 ﻿namespace Урок__8._Структуры_и_перечисления
 {
+    //модификатор_доступа enum Имя_перечисления { элемент1, элемент2, ..., элементN }
+    public enum DayOfWeek
+    {
+        Monday = 1,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+    enum Vehicles
+    {
+        Bike = 500,
+        Coupe = 1500,
+        Refrigerator = 3500,
+        Trailer = 2000,
+        Truck = 5000,
+        Tank = 12000
+    }
+    enum DistanceSun : ulong
+    {
+        Sun = 0,
+        Mercury = 5790000,
+        Venus = 108200000,
+        Earth = 149600000,
+        Mars = 227900000,
+        Jupiter = 7783000000,
+        Saturn = 1427000000,
+        Uranus = 4496000000,
+        Neptune = 5946000000
+    }
     public class Program
     {
+        public DayOfWeek NextDay(DayOfWeek today)
+        {
+            return (today < DayOfWeek.Sunday) ? ++today : DayOfWeek.Monday;
+        }
         static void Main(string[] args)
         {
             ExampleClass ec = new ExampleClass(1.12d, 2.13d);
@@ -39,6 +75,56 @@
             //  unboxing (распаковка)
             int b = (int)obj;
             Console.WriteLine($"b = {b}; type {b.GetType()}");
+
+            // nullable типы
+            int? nullInt = 222;
+            if (nullInt == null)
+            {
+                Console.WriteLine("nullInt is null!");
+            }
+            nullInt = nullInt ?? 100;
+            Console.WriteLine($"nullInt = {nullInt}");
+            string nullStr = null;
+            if (String.IsNullOrEmpty(nullStr))
+            {
+                Console.WriteLine("nullStr is null or empty!");
+            }
+
+            // enumerations (перечисления)
+            DayOfWeek today = DayOfWeek.Tuesday;
+            Console.WriteLine($"Today is {today}, type {today.GetType()}");
+            int tomorrow = (int)DayOfWeek.Wednesday;
+            Console.WriteLine($"Tomorrow is {tomorrow}, type {tomorrow.GetType()}");
+
+            while (true)
+            {
+                Console.WriteLine("Введите планету:\n" +
+                    "0\t-\tСолнце\n" +
+                    "1\t-\tМеркурий\n" +
+                    "2\t-\tВенера\n" +
+                    "3\t-\tЗемля\n" +
+                    "4\t-\tМарс\n" +
+                    "5\t-\tЮпитер\n" +
+                    "6\t-\tСатурн\n" +
+                    "7\t-\tУран\n" +
+                    "8\t-\tНептун\n");
+                int planet = Int32.Parse(Console.ReadLine());
+                switch (planet)
+                {
+                    case 0: Console.WriteLine($"Sun: {(ulong)DistanceSun.Sun}"); break;
+                    case 1: Console.WriteLine($"Mercury: {(ulong)DistanceSun.Mercury}"); break;
+                    case 2: Console.WriteLine($"Venus: {(ulong)DistanceSun.Venus}"); break;
+                    case 3: Console.WriteLine($"Earth: {(ulong)DistanceSun.Earth}"); break;
+                    case 4: Console.WriteLine($"Mars: {(ulong)DistanceSun.Mars}"); break;
+                    case 5: Console.WriteLine($"Jupiter: {(ulong)DistanceSun.Jupiter}"); break;
+                    case 6: Console.WriteLine($"Saturn: {(ulong)DistanceSun.Saturn}"); break;
+                    case 7: Console.WriteLine($"Uranus: {(ulong)DistanceSun.Uranus}"); break;
+                    case 8: Console.WriteLine($"Neptune: {(ulong)DistanceSun.Neptune}"); break;
+                    default:
+                        Console.WriteLine("Планета отсутствует в Солнечной системе!");
+                        return;
+                }
+            }
         }
     }
 
