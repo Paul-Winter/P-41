@@ -1,6 +1,9 @@
 ﻿namespace Урок__9._Делегаты_и_события
 {
     public delegate int IntDelegate(double d);
+    public delegate double AnonymousDelegateDouble(double a, double b);
+    public delegate void AnonymousDelegateInt(int i);
+    public delegate void AnonymousDelegateVoid();
     public class Program
     {
         //class MyDelegate : MulticastDelegate
@@ -12,10 +15,31 @@
 
         // модификатор_доступа event ИмяДелегата ИмяСобытия;
 
+        // модификатор_доступа delegate(параметры) { выполняемый код; }
+
         delegate void VoidDelegate(int i);
 
         static void Main(string[] args)
         {
+            // anonymous methods
+            Dispatcher dispatcher = new Dispatcher();
+            dispatcher.eventDouble += delegate (double a, double b)
+            {
+                if (b != 0)
+                {
+                    return a / b;
+                }
+                throw new DivideByZeroException();
+            };
+            double x = 5.7, y = 3.2;
+            int n = 5;
+            Console.WriteLine($"{x} / {y} = {dispatcher.OnEventDouble(x, y)}");
+            dispatcher.eventInt += delegate (int i)
+            {
+                Console.WriteLine($"{n} + {i} = {n + i}");
+            };
+            dispatcher.OnEventInt(7);
+
             // event
             Student[] group = new Student[]
             {
