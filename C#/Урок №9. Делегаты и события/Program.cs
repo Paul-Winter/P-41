@@ -10,10 +10,48 @@
 
         // модификатор_доступа delegate тип_данных ИмяДелегата(параметры);
 
+        // модификатор_доступа event ИмяДелегата ИмяСобытия;
+
         delegate void VoidDelegate(int i);
 
         static void Main(string[] args)
         {
+            // event
+            Student[] group = new Student[]
+            {
+                new Student
+                {
+                    FirstName = "Артём Романович",
+                    LastName = "Бочаров",
+                    BirthDate = new DateTime(2009, 12, 11)
+                },
+                new Student
+                {
+                    FirstName = "Эдуард Захарович",
+                    LastName = "Газарян",
+                    BirthDate = new DateTime(2009, 05, 06)
+                },
+                new Student
+                {
+                    FirstName = "Анастасия Владимировна",
+                    LastName = "Дымочкина",
+                    BirthDate = new DateTime(2008, 07, 21)
+                },
+                new Student
+                {
+                    FirstName = "Илья Сергеевич",
+                    LastName = "Лобозев",
+                    BirthDate = new DateTime(2009, 07, 30)
+                }
+            };
+            Teacher teacher = new Teacher();
+            foreach (Student student in group)
+            {
+                teacher.examEvent += student.Exam;
+            }
+            teacher.Exam("экзаменационный билет");
+
+            // multicast delegate
             Calculator calc = new Calculator();
             CalcDelegate delAll = null;
             CalcDelegate delDiv = calc.Div;
@@ -33,6 +71,7 @@
                 }
             }
 
+            // delegate
             while (true)
             {
                 Calculator calculator = new Calculator();
