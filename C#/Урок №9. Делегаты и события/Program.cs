@@ -14,6 +14,25 @@
 
         static void Main(string[] args)
         {
+            Calculator calc = new Calculator();
+            CalcDelegate delAll = null;
+            CalcDelegate delDiv = calc.Div;
+            delAll += calc.Sum;
+            delAll += delDiv;
+            delAll += calc.Mul;
+            delAll += calc.Sub;
+            foreach (CalcDelegate item in delAll.GetInvocationList())
+            {
+                try
+                {
+                    Console.WriteLine($"Результат: {item(5.7, 3.2)}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка: {ex.Message}");
+                }
+            }
+
             while (true)
             {
                 Calculator calculator = new Calculator();
