@@ -188,6 +188,48 @@ namespace Урок__10._Введение_в_Generics
             {
                 Console.WriteLine($"Выходной день {day}");
             }
+            Console.WriteLine("_______________________Словарь_______________________");
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict["D1"] = 12;
+            dict.Add("D2", 10);
+            dict.Add("D3", 10);
+            dict.Add("D4", 6);
+            foreach (KeyValuePair<string, int> item in dict)
+            {
+                Console.WriteLine($"Ключ {item.Key} : Значение {item.Value}");
+            }
+            Console.WriteLine("Изменяем значение по ключу:");
+            dict["D3"] = 14;
+            foreach (KeyValuePair<string, int> item in dict)
+            {
+                Console.WriteLine($"Ключ {item.Key} : Значение {item.Value}");
+            }
+            Console.WriteLine("Удаляем значение по ключу:");
+            dict.Remove("D3");
+            foreach (KeyValuePair<string, int> item in dict)
+            {
+                Console.WriteLine($"Ключ {item.Key} : Значение {item.Value}");
+            }
+            Console.WriteLine("=======================Создание_generics:=======================");
+            Point2D<int> p1 = new Point2D<int>(1, 3);
+            Point2D<double> p2 = new Point2D<double>(1.1d, 4.6d);
+            Console.WriteLine($"p1 {p1}");
+            Console.WriteLine($"p2 {p2}");
+        }
+    }
+
+    public class Point2D<T>
+    {
+        public T X { get; set; }
+        public T Y { get; set; }
+        public Point2D(T x, T y)
+        {
+            X = x;
+            Y = y;
+        }
+        public override string ToString()
+        {
+            return $"point {this.GetType()} {X.ToString()}:{Y.ToString()}";
         }
     }
 }
