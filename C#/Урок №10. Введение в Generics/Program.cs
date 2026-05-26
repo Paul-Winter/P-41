@@ -135,7 +135,59 @@ namespace Урок__10._Введение_в_Generics
                 Console.WriteLine($"Ключ {item} - значение {sL[item]}");
             }
             Console.WriteLine("\n\n");
-            //Console.WriteLine("=======================Обобщённые_коллекции:=======================");
+            Console.WriteLine("=======================Обобщённые_коллекции:=======================");
+            Console.WriteLine("_______________________Динамический_массив_______________________");
+            List<int> list1 = new List<int>();
+            List<double> list2 = new List<double>(5);
+            List<int> list3 = new List<int>(new int[] { 1, 4, 28, 7, 5 });
+            Console.WriteLine($"Вместимость по умолчанию list1: {list1.Capacity}");
+            list1.Add(1);
+            Console.WriteLine($"Вместимость после добавления элемента в list1: {list1.Capacity}");
+            list1.AddRange(new int[] { 2, 8, 1, 4 });
+            Console.WriteLine($"Вместимость после добавления коллекции в list1: {list1.Capacity}");
+            list1.Capacity = 10;
+            Console.WriteLine($"Вместимость установлена в list1: {list1.Capacity}");
+            Console.WriteLine($"Фактическое количество элементов в list1: {list1.Count}");
+            //list1.TrimToSize();
+            //Console.WriteLine($"Вместимость в list1 уменьшена до количества элементов: {list1.Capacity}");
+            Console.WriteLine($"__________Все элементы коллекции:");
+            foreach (object item in list1)
+            {
+                Console.WriteLine($"\t{item}");
+            }
+            Console.WriteLine($"__________Вставка нового элемента:");
+            list1.Insert(2, 123);
+            foreach (object item in list1)
+            {
+                Console.WriteLine($"\t{item}");
+            }
+            Console.WriteLine($"__________Индекс элемента: {list1.IndexOf(123)}");
+            Console.WriteLine($"__________Удаление элемента:");
+            list1.RemoveAt(2);
+            foreach (object item in list1)
+            {
+                Console.WriteLine($"\t{item}");
+            }
+
+            List<string> week = new List<string>(new string[] {
+                "понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"});
+            Console.WriteLine("__________Неделя:");
+            foreach (object day in days)
+            {
+                Console.WriteLine($"День недели {day}");
+            }
+            List<string> workWeek2 = new List<string>(week.GetRange(0, 5));
+            Console.WriteLine("__________Рабочая неделя:");
+            foreach (object day in workWeek)
+            {
+                Console.WriteLine($"Рабочий день {day}");
+            }
+            List<string> weekEnd2 = new List<string>(week.GetRange(5, 2));
+            Console.WriteLine("__________Выходные:");
+            foreach (object day in weekEnd)
+            {
+                Console.WriteLine($"Выходной день {day}");
+            }
         }
     }
 }
