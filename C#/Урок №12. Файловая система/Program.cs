@@ -14,15 +14,64 @@ namespace Урок__12._Файловая_система
             //Console.WriteLine($"Информация из файла: {ReadFile(filePath)}");
 
             //// StreamWriter & StreamReader
-            string filePath = "test.txt";
-            WriteText(filePath);
-            Console.WriteLine($"Информация из файла: {ReadText(filePath)}");
+            //string filePath = "test.txt";
+            //WriteText(filePath);
+            //Console.WriteLine($"Информация из файла: {ReadText(filePath)}");
 
             //// BinaryWriter & BinaryReader
             //string filePath = "test.dat";
             //BinaryWrite(filePath);
             //BinaryRead(filePath);
+
+            DirectoryInfo dir = new DirectoryInfo("."); //текущая директория
+            Console.WriteLine($"Полный путь к папке: {dir.FullName}");
+            Console.WriteLine($"Время создания: {dir.CreationTime}");
+            Console.WriteLine($"Содержит:");
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            foreach (DirectoryInfo d in dirs)
+            {
+                Console.WriteLine($"DIR\t{d.Name}");
+            }
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo f in files)
+            {
+                Console.WriteLine($"FILE\t{f.Name}");
+            }
+
+            if (!dir.Exists) //если каталог не существует
+            {
+                dir.Create();
+            }
+
+            //DirectoryInfo dir2 = dir.CreateSubdirectory("Subdir2");
+            //Console.WriteLine("Создана подпапка Subdir2");
+            //Console.WriteLine($"Полный путь к подпапке: {dir2.FullName}");
+            //Console.WriteLine($"Время создания: {dir2.CreationTime}");
+
+            string filePath = "test2.txt";
+            TextWrite(filePath);
+            TestRead(filePath);
         }
+
+        #region File - работа с файлами
+        static void TextWrite(string filePath)
+        {
+            using (StreamWriter sw = File.CreateText(filePath))
+            {
+                Console.WriteLine("Введите данные для записи в файл:");
+                string writeText = Console.ReadLine();
+                sw.WriteLine(writeText);
+                Console.WriteLine("Запись проведена успешно!");
+            }
+        }
+        static void TestRead(string filePath)
+        {
+            using (StreamReader sr = File.OpenText(filePath))
+            {
+                Console.WriteLine($"Информация из файла: {sr.ReadToEnd()}");
+            }
+        }
+        #endregion
 
         #region FileStream - работа с файловыми потоками
         static void WriteFile(string filePath)
@@ -65,7 +114,7 @@ namespace Урок__12._Файловая_система
         {
             using (FileStream fs = new FileStream(filePath, FileMode.Open))
             {
-                using (StreamReader sw = new StreamReader(fs, Encoding.Default))
+                using (StreamReader sw = new StreamReader(fs, Encoding.Unicode))
                 {
                     return sw.ReadToEnd();
                 }
