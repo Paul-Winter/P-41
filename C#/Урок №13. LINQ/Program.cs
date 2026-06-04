@@ -21,6 +21,27 @@
         {
             int[] arr1 = { 5, 34, 67, 12, 98, 48, 94, 42, 88, 75,
                            6, 43, 76, 21, 89, 84, 49, 24, 44, 57 };
+
+            string[] poemS = {
+                "All the world`s a stage,",
+                "And all the men and women merely players;",
+                "They have their exists and their entrances,",
+                "And one man in his time plays many parts,",
+                "His acts being seven ages..."
+            };
+
+            string[] poemP =
+            {
+                "Я помню чудное мгновенье:",
+                "Передо мной явилась ты,",
+                "Как мимолётное виденье,",
+                "Как гений чистой красоты",
+                "В томленьях грусти безнадежной,",
+                "В тревогах шумной суеты,",
+                "Звучал мне долго голос нежный",
+                "И снились милые черты..."
+            };
+
             IEnumerable<int> query1 = from i
                                       in arr1
                                       select i;
@@ -86,6 +107,27 @@
                     }
                     Console.WriteLine();
                 }
+            }
+
+            IEnumerable<string> qPS = from p in poemS
+                                     let words = p.Split(' ', ';', ',', '.', ':')
+                                     from w in words
+                                     where w.Count() >= 5
+                                     select w;
+            IEnumerable<string> qPP = from p in poemP
+                                      let words = p.Split(' ', ';', ',', '.', ':')
+                                      from w in words
+                                      where w.Count() > 5
+                                      select w;
+            Console.WriteLine("\n\nСлова с 5 и более буквами:");
+            foreach (string item in qPS)
+            {
+                Console.WriteLine($"\t{item}");
+            }
+            Console.WriteLine("\n\nСлова с более 5 буквами:");
+            foreach (string item in qPP)
+            {
+                Console.WriteLine($"\t{item}");
             }
         }
     }
