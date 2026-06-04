@@ -129,6 +129,44 @@
             {
                 Console.WriteLine($"\t{item}");
             }
+
+            List<Group> groups = new List<Group>
+            {
+                new Group {Id = 1, Name = "П-12"},
+                new Group {Id = 2, Name = "ПВ-311"},
+                new Group {Id = 3, Name = "П-41"}
+            };
+            List<Student> students = new List<Student>
+            {
+                new Student { FirstName = "Артём Романович", LastName = "Бочаров", GroupId = 3},
+                new Student { FirstName = "Эдуард Захарович", LastName = "Газарян", GroupId = 3},
+                new Student { FirstName = "Анастасия Владимировна", LastName = "Дымочкина", GroupId = 3},
+                new Student { FirstName = "Илья Сергеевич", LastName = "Лобозев", GroupId = 3},
+                new Student { FirstName = "Денис Евгеньевич", LastName = "Беляев", GroupId = 2},
+                new Student { FirstName = "Павел Дмитриевич", LastName = "Кордуков", GroupId = 1},
+                new Student { FirstName = "Филипп Эдуардович", LastName = "Тупольский", GroupId = 1},
+            };
+
+            IEnumerable<Student> queryA = from g in groups
+                                         join st in students on g.Id equals st.GroupId into result
+                                         from r in result
+                                         select r;
+            Console.WriteLine("\n\nСтуденты в группах (вариант А):");
+            foreach (Student item in queryA)
+            {
+                Console.WriteLine($"Фамилия: {item.LastName},\tИмя: {item.FirstName},\t" +
+                    $"Группа: {groups.First(g => g.Id == item.GroupId).Name}");
+            }
+            Console.WriteLine("\n\nСтуденты в группах (вариант Б):");
+            var queryB = from g in groups
+                         join st in students on g.Id equals st.GroupId
+                         select new { FirstName = st.FirstName,
+                                      LastName = st.LastName,
+                                      GroupName = g.Name };
+            foreach (var item in queryB)
+            {
+                Console.WriteLine($"Фамилия: {item.LastName},\tИмя: {item.FirstName},\tГруппа: {item.GroupName}");
+            }
         }
     }
 }
