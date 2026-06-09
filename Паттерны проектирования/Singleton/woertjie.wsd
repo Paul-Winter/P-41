@@ -1,0 +1,26 @@
+@startuml kkkk
+component "Browser" as browser
+component "Web-server" as webserver
+component "Authenfication" as auth
+component "Database" as db
+component "Email service" as email
+
+interface IHttpRequest
+interface IAuth
+interface IDataAccess
+interface ISendMail
+
+browser -( IHttpRequest
+IHttpRequest - webserver
+
+webserver -( IAuth
+IAuth - auth
+
+webserver -- IDataAccess
+IDataAccess - db
+
+auth -( IDataAccess
+
+auth -( ISendMail
+ISendMail - email
+@enduml
