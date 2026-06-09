@@ -1,0 +1,26 @@
+@startuml raz
+node "Client PC <<device>>"{
+    artifact "Browser.exe"
+}
+node "Web Server <<server>>"{
+    artifact "nginx.conf"
+    artifact "WebServer.dll"
+}
+node "App Server <<server>>"{
+    artifact "AuthService.dll"
+    artifact "WebServer.dll"
+    artifact ".NET Runtime"
+}
+node "DB Server <<server>>"{
+    artifact "PostgreSQL"
+}
+node "Mail Server <<server>>"{
+    artifact "EmailService.dll"
+}
+
+"Client PC <<device>>" --> "Web Server <<server>>" : HTTPS
+"Web Server <<server>>" --> "App Server <<server>>" : HTTP
+"App Server <<server>>" --> "DB Server <<server>>" : TCP 5432
+"App Server <<server>>" --> "Mail Server <<server>>" : SMTP
+
+@enduml

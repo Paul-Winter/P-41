@@ -1,0 +1,15 @@
+@startuml collaboration
+left to right direction
+'Objects
+object "client\n:Client" as client
+object "orderForm\n:OrderForm" as orderForm
+object "cart\n:Cart" as cart
+object "item\n:Item" as item
+object "paymentp\n:Payment" as payment
+'Connections
+client -> orderForm : 1: makeOrder()
+orderForm -> cart : 2: addItem(item)
+cart -> item : 3: getPrice()
+orderForm -> payment : 4: initialatePayments()
+cart->payment : 5: sccept()
+@enduml
