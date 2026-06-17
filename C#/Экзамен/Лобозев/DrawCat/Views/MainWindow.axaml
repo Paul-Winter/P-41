@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:DrawCat.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DrawCat.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="DrawCat">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Grid>
+    <Canvas Width="400" Height="400" Background="#ffffff">
+        <Path Data="M 270, 310 C 340, 300 350, 220 305,205"
+              Stroke="Black" StrokeThickness="18" StrokeLineCap="Round"/>
+        <Ellipse Canvas.Left="125" Canvas.Top="195"
+                 Width="150" Height="170" Fill="Black"/>
+        <Ellipse Canvas.Left="168" Canvas.Top="217" Width="64"
+                 Height="96" Fill="DimGray"/>
+        <Ellipse Canvas.Left="144" Canvas.Top="332" Width="52" Height="32" Fill="LightSlateGray"/>
+        
+        <Ellipse Canvas.Left="204" Canvas.Top="332" Width="52" Height="32" Fill="LightSlateGray"/>
+        <Ellipse Canvas.Left="135" Canvas.Top="85" Width="130" Height="120" Fill="Black"/>
+        <Polygon Points="160,98 168,42 200,88" Fill="Black"/>
+        <Polygon Points="198,87 232,42 250,107" Fill="Black"/>
+        <Polygon Points="165,90 170,58 192,85" Fill="HotPink"/>
+        <Polygon Points="205,85 230,58 240,97" Fill="HotPink"/>
+
+    </Canvas>
+</Grid>
+
+  
+
+</Window>
