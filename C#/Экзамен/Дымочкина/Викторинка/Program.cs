@@ -292,8 +292,8 @@ namespace Викторинка
                     options[j] = Console.ReadLine() ?? "";
                 }
                 Console.Write("Номер правильного ответа (1-4): ");
-                int correct = 0;
-                int.TryParse(Console.ReadLine(), out correct);
+                //int correct = 0;
+                int.TryParse(Console.ReadLine(), out int correct);
                 correct = Math.Clamp(correct - 1, 0, 3);
                 quiz.Questions.Add(new Question { Text = text, Options = options, CorrectIndex = correct });
             }
