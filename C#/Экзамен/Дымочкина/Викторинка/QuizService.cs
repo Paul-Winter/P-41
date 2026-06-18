@@ -65,9 +65,7 @@ namespace Викторинка
         private void LoadQuizzes()
         {
             if (File.Exists(QuestionsFile))
-            {
                 Quizzes = ParseQuizzesFromFile(QuestionsFile);
-            }
             else
             {
                 Quizzes = CreateDefaultQuizzes();
@@ -75,7 +73,7 @@ namespace Викторинка
             }
         }
 
-        private void SaveQuizzes()
+        public void SaveQuizzes()
         {
             using (var writer = new StreamWriter(QuestionsFile))
             {
@@ -113,7 +111,7 @@ namespace Викторинка
                         var question = new Question
                         {
                             Text = parts[0],
-                            Options = new string[] { parts[1], parts[2], parts[3], parts[4] },
+                            Options = new[] { parts[1], parts[2], parts[3], parts[4] },
                             CorrectIndex = int.Parse(parts[5])
                         };
                         currentQuiz.Questions.Add(question);
@@ -138,6 +136,7 @@ namespace Викторинка
             };
         }
 
+        // Фабрики вопросов (оставлены без изменений, только для примера)
         private List<Question> GeographyQuestions() => new List<Question>
         {
             new Question { Text = "Столица Франции?", Options = new[]{"Лондон","Берлин","Париж","Мадрид"}, CorrectIndex = 2 },
@@ -227,7 +226,7 @@ namespace Викторинка
             new Question { Text = "Из чего делают пасту карбонару?", Options = new[]{"Сливки, бекон","Яйца, гуанчиале","Томат, базилик","Сыр, грибы"}, CorrectIndex = 1 },
             new Question { Text = "Что такое 'табаско'?", Options = new[]{"Сыр","Соус","Напиток","Суп"}, CorrectIndex = 1 },
             new Question { Text = "Основной ингредиент гуакамоле?", Options = new[]{"Помидор","Авокадо","Перец","Лук"}, CorrectIndex = 1 },
-            new Question { Text = "Что такое 'жульен'?", Options = new[]{"Закуска","Суп","Салат","Десерт"}, CorrectIndex = 0 },
+            new Question { Text = "Что такое 'жульен'?", Options = new[]{"Нарезка","Суп","Салат","Десерт"}, CorrectIndex = 0 },
             new Question { Text = "Как называется японское блюдо из сырой рыбы?", Options = new[]{"Суши","Сашими","Рамен","Темпура"}, CorrectIndex = 1 },
             new Question { Text = "Из какого молока делают моцареллу?", Options = new[]{"Коровьего","Буйволиного","Козьего","Овечьего"}, CorrectIndex = 1 },
             new Question { Text = "Что добавляют в тесто для оладий, чтобы они были пышными?", Options = new[]{"Сахар","Соль","Разрыхлитель","Яйцо"}, CorrectIndex = 2 },
@@ -249,7 +248,6 @@ namespace Викторинка
             new Question { Text = "Что такое 'cookie' в веб-контексте?", Options = new[]{"Вирус","Реклама","Небольшой файл данных","Печенье"}, CorrectIndex = 2 },
             new Question { Text = "Какая операционная система с открытым исходным кодом самая популярная?", Options = new[]{"Windows","macOS","Linux","Android"}, CorrectIndex = 2 }
         };
-
         public bool Register(string login, string password)
         {
             if (Users.Any(u => u.Login == login))
@@ -281,9 +279,63 @@ namespace Викторинка
         public (int percent, int bestScore) GetProgress(User user, string topic)
         {
             var res = user.Results.FirstOrDefault(r => r.Topic == topic);
-            int percent = (res != null && res.Completed) ? 100 : 0;
+            var quiz = Quizzes.FirstOrDefault(q => q.Topic == topic);
+            int total = quiz?.Questions.Count ?? 10;
             int best = res?.BestScore ?? 0;
+            int percent = total > 0 ? (best * 100) / total : 0;
             return (percent, best);
+        }
+        public void AddQuiz(Quiz quiz)
+        {
+            Quizzes.Add(quiz);
+            SaveQuizzes();
+        }
+
+        public void RemoveQuiz(int index)
+        {
+            if (index >= 0 && index < Quizzes.Count)
+            {
+                Quizzes.RemoveAt(index);
+                SaveQuizzes();
+            }
+        }
+
+        public void AddQuestion(Quiz quiz, Question question)
+        {
+            quiz.Questions.Add(question);
+            SaveQuizzes();
+        }
+
+        public void RemoveQuestion(Quiz quiz, int questionIndex)
+        {
+            if (questionIndex >= 0 && questionIndex < quiz.Questions.Count)
+            {
+                quiz.Questions.RemoveAt(questionIndex);
+                SaveQuizzes();
+            }
+        }
+        public bool DeleteUser(string login)
+        {
+            var user = Users.FirstOrDefault(u => u.Login == login);
+            if (user != null)
+            {
+                Users.Remove(user);
+                SaveUsers();
+                return true;
+            }
+            return false;
+        }
+
+        public bool ChangePassword(string login, string newPassword)
+        {
+            var user = Users.FirstOrDefault(u => u.Login == login);
+            if (user != null)
+            {
+                user.Password = newPassword;
+                SaveUsers();
+                return true;
+            }
+            return false;
         }
     }
 }
