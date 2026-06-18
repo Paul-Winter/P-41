@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication1.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1960" d:DesignHeight="1080"
+        x:Class="AvaloniaApplication1.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication1"
+        Focusable="True"
+        KeyDown="OnKeyDown"
+        KeyUp="OnKeyUp">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+   <Grid>
+       <Canvas  x:Name="Field" Width="1960" Height="1080"
+                Background="#1e1e1e">
+       <Ellipse x:Name="Player" Width="40" Height="40" 
+                Canvas.Left="990" Canvas.Top="450"
+                Fill="DodgerBlue"/>
+           <Rectangle x:Name="Obstacle1" Canvas.Left="490" Canvas.Top="520" Width="80" Height="80" Fill="Red"/>
+
+           <Rectangle x:Name="Obstacle2" Canvas.Left="1470" Canvas.Top="520" Width="80" Height="80" Fill="Bisque"/>
+
+            
+        </Canvas>
+
+
+   </Grid>
+</Window>
