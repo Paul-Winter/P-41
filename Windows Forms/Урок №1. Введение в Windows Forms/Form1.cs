@@ -36,5 +36,21 @@ namespace Урок__1.Введение_в_Windows_Forms
                 this.Close();
             }
         }
+
+        private void Form1_MouseEnter(object sender, EventArgs e)
+        {
+            label1.Text = "Мышь в окне";
+        }
+
+        private void Form1_MouseLeave(object sender, EventArgs e)
+        {
+            label1.Text = "";
+            label2.Text = "";
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            label2.Text = e.X.ToString() + " : "+ e.Y.ToString();
+        }
     }
 }
