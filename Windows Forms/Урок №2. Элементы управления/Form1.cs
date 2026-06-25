@@ -16,6 +16,9 @@ namespace Урок__2.Элементы_управления
         {
             InitializeComponent();
             button2.Enabled = false;
+            label2.Text = DateTime.Now.ToLongTimeString();
+            timer2.Interval = 500;
+            timer2.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -43,5 +46,21 @@ namespace Урок__2.Элементы_управления
             button2.Enabled = false;
             MessageBox.Show("Таймер не успел отработать!", "Таймер");
         }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            label2.Text = DateTime.Now.ToLongTimeString();
+        }
     }
+
+    //DateTime - DateTime = TimeSpan
+    //{
+    //    int year;           1-9999
+    //    int month;          1-12
+    //    int day;            1-кол-во дней в месяце
+    //    int hour;           0-23
+    //    int minute;         0-59
+    //    int second;         0-59
+    //    int millisecond;    0-999
+    //}
 }
