@@ -79,5 +79,15 @@ namespace Урок__3.Списки
         {
 
         }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            label3.Text = trackBar1.Value.ToString();
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            label4.Text = trackBar2.Value.ToString();
+        }
     }
 }
