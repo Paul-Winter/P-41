@@ -3144,7 +3144,9 @@ namespace sea_wars
         {
             if (status1 == 1 || status1 == 2 || status2 == 0)
             {
-                Console.WriteLine("\n\nХод 1 игрока\n");
+                status1 = 0;
+                status2 = 1;
+                /*Console.WriteLine("\n\nХод 1 игрока\n");
                 bool temp3 = false;
                 int A = 0; int B = 0;
                 while (!temp3)
@@ -3157,7 +3159,7 @@ namespace sea_wars
                     else
                         Console.WriteLine("\nПрограмма не смогла определить позицию удара или в эту позицию нельзя ударить! Попробуйте еще раз\n");
                 }
-                Check(A, B);
+                Check(A, B);*/
             }
             else
             {

@@ -10,7 +10,7 @@ namespace SeaWar
             int choice = 999; int choice2 = 0;
             char choicechar = '-';
             string inputlog = " "; string inputpass = " "; string inputlogreg = " "; string inputpassreg = " ";
-            string filePath = @"C:\Users\Eduard\Documents\P-41\C#\Экзамен\Газарян\Sea wars\profiles.txt";
+            string filePath = @"C:\Users\Student\P-41\C#\Экзамен\Газарян\Sea wars\profile.txt";
             Game play = new Game();
             Botgame botplay = new Botgame();
             Profiles profile = new Profiles();
