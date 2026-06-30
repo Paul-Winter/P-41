@@ -18,6 +18,7 @@ namespace Урок__3.Списки
             progressBar1.Maximum = 50;
             progressBar1.Minimum = 0;
             progressBar1.Step = 1;
+            toolStripStatusLabel1.Text = DateTime.Now.ToLongDateString();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -72,6 +73,11 @@ namespace Урок__3.Списки
         private void button3_Click(object sender, EventArgs e)
         {
             numericUpDown1.Value += numericUpDown1.Increment;
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

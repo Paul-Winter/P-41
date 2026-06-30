@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -46,7 +47,19 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.abcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abcToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -237,11 +250,99 @@
             // 
             this.toolTip1.IsBalloon = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1,
+            this.toolStripDropDownButton1,
+            this.toolStripSplitButton1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 480);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1138, 22);
+            this.statusStrip1.TabIndex = 16;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(66, 17);
+            this.toolStripStatusLabel1.Text = "Status Strip";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bcaToolStripMenuItem,
+            this.bacToolStripMenuItem,
+            this.cbaToolStripMenuItem1,
+            this.abcToolStripMenuItem1});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 20);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cbaToolStripMenuItem,
+            this.abcToolStripMenuItem});
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 20);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // abcToolStripMenuItem
+            // 
+            this.abcToolStripMenuItem.Name = "abcToolStripMenuItem";
+            this.abcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abcToolStripMenuItem.Text = "abc";
+            // 
+            // cbaToolStripMenuItem
+            // 
+            this.cbaToolStripMenuItem.Name = "cbaToolStripMenuItem";
+            this.cbaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cbaToolStripMenuItem.Text = "cba";
+            // 
+            // abcToolStripMenuItem1
+            // 
+            this.abcToolStripMenuItem1.Name = "abcToolStripMenuItem1";
+            this.abcToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.abcToolStripMenuItem1.Text = "abc";
+            // 
+            // cbaToolStripMenuItem1
+            // 
+            this.cbaToolStripMenuItem1.Name = "cbaToolStripMenuItem1";
+            this.cbaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.cbaToolStripMenuItem1.Text = "cba";
+            // 
+            // bacToolStripMenuItem
+            // 
+            this.bacToolStripMenuItem.Name = "bacToolStripMenuItem";
+            this.bacToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bacToolStripMenuItem.Text = "bac";
+            // 
+            // bcaToolStripMenuItem
+            // 
+            this.bcaToolStripMenuItem.Name = "bcaToolStripMenuItem";
+            this.bcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bcaToolStripMenuItem.Text = "bca";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 450);
+            this.ClientSize = new System.Drawing.Size(1138, 502);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.numericUpDown1);
@@ -261,6 +362,8 @@
             this.Name = "Form1";
             this.Text = "СПИСКИ";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +388,17 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripMenuItem bcaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bacToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cbaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem abcToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cbaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abcToolStripMenuItem;
     }
 }
 
