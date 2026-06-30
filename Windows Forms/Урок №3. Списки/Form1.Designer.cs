@@ -39,6 +39,12 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.buttonProgress = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -161,11 +167,70 @@
             this.comboBox1.Size = new System.Drawing.Size(304, 33);
             this.comboBox1.TabIndex = 10;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(822, 323);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(304, 57);
+            this.progressBar1.TabIndex = 11;
+            // 
+            // buttonProgress
+            // 
+            this.buttonProgress.Location = new System.Drawing.Point(420, 357);
+            this.buttonProgress.Name = "buttonProgress";
+            this.buttonProgress.Size = new System.Drawing.Size(368, 23);
+            this.buttonProgress.TabIndex = 12;
+            this.buttonProgress.Text = "Прогресс!";
+            this.buttonProgress.UseVisualStyleBackColor = true;
+            this.buttonProgress.Click += new System.EventHandler(this.buttonProgress_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(420, 388);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(367, 20);
+            this.numericUpDown1.TabIndex = 13;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(420, 414);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(178, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "-";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(610, 414);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(178, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "+";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.buttonProgress);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkedListBox1);
@@ -179,6 +244,7 @@
             this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "СПИСКИ";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +263,11 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button buttonProgress;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
