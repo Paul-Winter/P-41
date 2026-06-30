@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -44,6 +45,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +94,7 @@
             this.buttonAdd.Size = new System.Drawing.Size(368, 23);
             this.buttonAdd.TabIndex = 4;
             this.buttonAdd.Text = "Добавить";
+            this.toolTip1.SetToolTip(this.buttonAdd, "добавляет элемент в список");
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -102,6 +105,7 @@
             this.buttonDelete.Size = new System.Drawing.Size(368, 23);
             this.buttonDelete.TabIndex = 5;
             this.buttonDelete.Text = "Удалить";
+            this.toolTip1.SetToolTip(this.buttonDelete, "удаляет выделенные элементы из списка");
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
@@ -112,6 +116,7 @@
             this.buttonFrom.Size = new System.Drawing.Size(368, 23);
             this.buttonFrom.TabIndex = 6;
             this.buttonFrom.Text = "Перенести";
+            this.toolTip1.SetToolTip(this.buttonFrom, "перенести выделенные элементы из списка слева");
             this.buttonFrom.UseVisualStyleBackColor = true;
             this.buttonFrom.Click += new System.EventHandler(this.buttonFrom_Click);
             // 
@@ -122,6 +127,7 @@
             this.button1.Size = new System.Drawing.Size(368, 23);
             this.button1.TabIndex = 7;
             this.button1.Text = "Очистить";
+            this.toolTip1.SetToolTip(this.button1, "очищает список");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -140,6 +146,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(304, 238);
             this.checkedListBox1.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.checkedListBox1, "список студентов группы");
             // 
             // label2
             // 
@@ -166,6 +173,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(304, 33);
             this.comboBox1.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.comboBox1, "выберите из списка");
             // 
             // progressBar1
             // 
@@ -173,6 +181,7 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(304, 57);
             this.progressBar1.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.progressBar1, "прогресс");
             // 
             // buttonProgress
             // 
@@ -181,6 +190,7 @@
             this.buttonProgress.Size = new System.Drawing.Size(368, 23);
             this.buttonProgress.TabIndex = 12;
             this.buttonProgress.Text = "Прогресс!";
+            this.toolTip1.SetToolTip(this.buttonProgress, "демонстрация прогресса");
             this.buttonProgress.UseVisualStyleBackColor = true;
             this.buttonProgress.Click += new System.EventHandler(this.buttonProgress_Click);
             // 
@@ -208,6 +218,7 @@
             this.button2.Size = new System.Drawing.Size(178, 23);
             this.button2.TabIndex = 14;
             this.button2.Text = "-";
+            this.toolTip1.SetToolTip(this.button2, "уменьшить");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -218,8 +229,13 @@
             this.button3.Size = new System.Drawing.Size(178, 23);
             this.button3.TabIndex = 15;
             this.button3.Text = "+";
+            this.toolTip1.SetToolTip(this.button3, "увеличить");
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
             // 
             // Form1
             // 
@@ -268,6 +284,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
