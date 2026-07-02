@@ -56,7 +56,6 @@
             this.checkBoxOnline = new System.Windows.Forms.CheckBox();
             this.checkBoxComm = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.labelSalary = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxDistr = new System.Windows.Forms.TextBox();
@@ -67,6 +66,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.numericUpDownExp = new System.Windows.Forms.NumericUpDown();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHouse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSalary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExp)).BeginInit();
@@ -104,11 +104,13 @@
             // 
             // richTextBoxBio
             // 
+            this.richTextBoxBio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.richTextBoxBio.Location = new System.Drawing.Point(16, 146);
             this.richTextBoxBio.Name = "richTextBoxBio";
             this.richTextBoxBio.Size = new System.Drawing.Size(315, 357);
             this.richTextBoxBio.TabIndex = 3;
             this.richTextBoxBio.Text = "";
+            this.richTextBoxBio.TextChanged += new System.EventHandler(this.richTextBoxBio_TextChanged);
             // 
             // buttonSend
             // 
@@ -119,6 +121,7 @@
             this.buttonSend.TabIndex = 4;
             this.buttonSend.Text = "Отправить";
             this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
             // radioButtonMale
             // 
@@ -131,6 +134,7 @@
             this.radioButtonMale.TabStop = true;
             this.radioButtonMale.Text = "Мужской";
             this.radioButtonMale.UseVisualStyleBackColor = true;
+            this.radioButtonMale.CheckedChanged += new System.EventHandler(this.radioButtonMale_CheckedChanged);
             // 
             // dateTimePickerBirthday
             // 
@@ -138,6 +142,7 @@
             this.dateTimePickerBirthday.Name = "dateTimePickerBirthday";
             this.dateTimePickerBirthday.Size = new System.Drawing.Size(164, 20);
             this.dateTimePickerBirthday.TabIndex = 6;
+            this.dateTimePickerBirthday.ValueChanged += new System.EventHandler(this.dateTimePickerBirthday_ValueChanged);
             // 
             // checkBoxOffice
             // 
@@ -149,12 +154,14 @@
             this.checkBoxOffice.TabIndex = 7;
             this.checkBoxOffice.Text = "Офис";
             this.checkBoxOffice.UseVisualStyleBackColor = true;
+            this.checkBoxOffice.CheckedChanged += new System.EventHandler(this.checkBoxOffice_CheckedChanged);
             // 
             // monthCalendarStartWork
             // 
             this.monthCalendarStartWork.Location = new System.Drawing.Point(621, 189);
             this.monthCalendarStartWork.Name = "monthCalendarStartWork";
             this.monthCalendarStartWork.TabIndex = 8;
+            this.monthCalendarStartWork.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendarStartWork_DateChanged);
             // 
             // numericUpDownHouse
             // 
@@ -177,6 +184,7 @@
             0,
             0,
             0});
+            this.numericUpDownHouse.ValueChanged += new System.EventHandler(this.numericUpDownHouse_ValueChanged);
             // 
             // comboBoxVac
             // 
@@ -193,6 +201,7 @@
             this.comboBoxVac.Name = "comboBoxVac";
             this.comboBoxVac.Size = new System.Drawing.Size(164, 28);
             this.comboBoxVac.TabIndex = 10;
+            this.comboBoxVac.SelectedIndexChanged += new System.EventHandler(this.comboBoxVac_SelectedIndexChanged);
             // 
             // trackBarSalary
             // 
@@ -232,6 +241,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(232, 20);
             this.textBoxName.TabIndex = 15;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // label4
             // 
@@ -249,6 +259,7 @@
             this.textBoxPatronic.Name = "textBoxPatronic";
             this.textBoxPatronic.Size = new System.Drawing.Size(232, 20);
             this.textBoxPatronic.TabIndex = 17;
+            this.textBoxPatronic.TextChanged += new System.EventHandler(this.textBoxPatronic_TextChanged);
             // 
             // label5
             // 
@@ -321,6 +332,7 @@
             this.radioButtonFemale.TabStop = true;
             this.radioButtonFemale.Text = "Женский";
             this.radioButtonFemale.UseVisualStyleBackColor = true;
+            this.radioButtonFemale.CheckedChanged += new System.EventHandler(this.radioButtonFemale_CheckedChanged);
             // 
             // label11
             // 
@@ -342,6 +354,7 @@
             this.checkBoxOnline.TabIndex = 27;
             this.checkBoxOnline.Text = "Удаленно";
             this.checkBoxOnline.UseVisualStyleBackColor = true;
+            this.checkBoxOnline.CheckedChanged += new System.EventHandler(this.checkBoxOnline_CheckedChanged);
             // 
             // checkBoxComm
             // 
@@ -353,6 +366,7 @@
             this.checkBoxComm.TabIndex = 28;
             this.checkBoxComm.Text = "Командировки";
             this.checkBoxComm.UseVisualStyleBackColor = true;
+            this.checkBoxComm.CheckedChanged += new System.EventHandler(this.checkBoxComm_CheckedChanged);
             // 
             // label12
             // 
@@ -364,25 +378,16 @@
             this.label12.TabIndex = 29;
             this.label12.Text = "Зарплатные ожидания";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label13.Location = new System.Drawing.Point(706, 421);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(112, 20);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "тысяч рублей";
-            // 
             // labelSalary
             // 
             this.labelSalary.AutoSize = true;
             this.labelSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelSalary.Location = new System.Drawing.Point(654, 421);
+            this.labelSalary.Location = new System.Drawing.Point(670, 421);
             this.labelSalary.Name = "labelSalary";
-            this.labelSalary.Size = new System.Drawing.Size(27, 20);
+            this.labelSalary.Size = new System.Drawing.Size(134, 20);
             this.labelSalary.TabIndex = 31;
-            this.labelSalary.Text = "17";
+            this.labelSalary.Text = "17 тысяч рублей";
+            this.labelSalary.Click += new System.EventHandler(this.labelSalary_Click);
             // 
             // label15
             // 
@@ -400,6 +405,7 @@
             this.textBoxDistr.Name = "textBoxDistr";
             this.textBoxDistr.Size = new System.Drawing.Size(160, 20);
             this.textBoxDistr.TabIndex = 36;
+            this.textBoxDistr.TextChanged += new System.EventHandler(this.textBoxDistr_TextChanged);
             // 
             // label16
             // 
@@ -417,6 +423,7 @@
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.Size = new System.Drawing.Size(160, 20);
             this.textBoxStreet.TabIndex = 34;
+            this.textBoxStreet.TextChanged += new System.EventHandler(this.textBoxStreet_TextChanged);
             // 
             // label17
             // 
@@ -434,6 +441,7 @@
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(160, 20);
             this.textBoxCity.TabIndex = 32;
+            this.textBoxCity.TextChanged += new System.EventHandler(this.textBoxCity_TextChanged);
             // 
             // label18
             // 
@@ -456,26 +464,33 @@
             this.numericUpDownExp.Name = "numericUpDownExp";
             this.numericUpDownExp.Size = new System.Drawing.Size(185, 20);
             this.numericUpDownExp.TabIndex = 39;
-            this.numericUpDownExp.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.numericUpDownExp.ValueChanged += new System.EventHandler(this.numericUpDownExp_ValueChanged);
             // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(16, 509);
-            this.progressBar1.Maximum = 15;
+            this.progressBar1.Maximum = 14;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(802, 23);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 40;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label13.Location = new System.Drawing.Point(632, 31);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(153, 20);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "Адрес проживания";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 538);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.numericUpDownExp);
             this.Controls.Add(this.label18);
@@ -486,7 +501,6 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.textBoxCity);
             this.Controls.Add(this.labelSalary);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.checkBoxComm);
             this.Controls.Add(this.checkBoxOnline);
@@ -555,7 +569,6 @@
         private System.Windows.Forms.CheckBox checkBoxOnline;
         private System.Windows.Forms.CheckBox checkBoxComm;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label labelSalary;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxDistr;
@@ -566,6 +579,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown numericUpDownExp;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label13;
     }
 }
 
